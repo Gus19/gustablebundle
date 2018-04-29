@@ -1,0 +1,75 @@
+{% block table %}
+  {% spaceless %}
+    {{ table_begin(view, options) }}
+    {{ table_head(view, options) }}
+    {{ table_body(view, options) }}
+    {{ table_end(view, options) }}
+    {% if isPaginatable %}
+      {{ table_pagination(view) }}
+    {% endif %}
+  {% endspaceless %}
+{% endblock %}
+
+{% block table_begin %}
+  {% spaceless %}
+    {% if isSelectable %}
+      <form name="form_selection_{{ name }}" method="post">
+        <input type="hidden" name="is_selection_{{ name }}" value="{{ name }}" />
+      {% endif %}
+      <table id="{{ name }}"{{ attributes|format_attributes }}>
+      {% endspaceless %}
+    {% endblock %}
+
+    {% block table_end %}
+      {% spaceless %}
+        {% if isSelectable and renderSelectionButtons %}
+          <tfoot>
+            <tr>
+              <td colspan="{{ columnsLength }}">{{ selection_buttons(tableView) }}</td>
+            </tr>
+          </tfoot>
+        {% endif %}
+      </table>
+      {% if isSelectable %}
+      </form>
+    {% endif %}
+  {% endspaceless %}
+{% endblock %}
+
+{% block table_head %}
+  {% spaceless %}
+    <thead>
+      <tr>
+        {% for column in columns %}
+          <th class="col-{{ loop.index}}" {{ column.headAttributes|format_attributes }}>{{ column.label|trans }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+  {% endspaceless %}
+{% endblock %}
+
+{% block table_body %}
+  {% spaceless %}
+    <tbody>
+      {% for row in rows %}
+        <tr{{ tableView.rowAttributes(row)|format_attributes }}>
+          {% for column in columns %}
+            <td class="col-{{ loop.index}}" {{ column.attributes|format_attributes }}>
+              {% if column.view is defined %}
+                {{ include(column.view, { 'row': row, 'entity': row.entity }) }}
+              {% elseif column.trans %}
+                {{ column.content(row)|raw|trans }}
+              {% else %}
+                {{ column.content(row)|raw }}
+              {% endif %}
+            </td>
+          {% endfor %}
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="{{ columns|length }}">{{ emptyValue|trans }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  {% endspaceless %}
+{% endblock %}
