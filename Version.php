@@ -6,7 +6,6 @@ namespace JGM\TableBundle;
  * Information holder for the version in debug output.
  * 
  * @author	Julien Albinet <julien.albinet@gmail.com>
- * @since	1.3
  */
 class Version
 {
