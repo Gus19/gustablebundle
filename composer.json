@@ -4,35 +4,32 @@
     "type" : "symfony-bundle",
     "authors" : [{
         "name" : "Gus19",
-        "email" : "julien.albinet@gmail.com"
+        "email" : "github@julienalbinet.fr"
     }],
     "keywords" : [
         "symfony",
-		"table",
-		"data table",
-		"simple tables",
-		"bundle",
-		"pagination",
-		"filter",
-		"search"
+	"table",
+	"data table",
+	"simple tables",
+	"bundle",
+	"pagination",
+	"filter",
+	"search"
     ],
     "license" : [ "MIT" ],
     "require" : {
       "php": ">=5.3.9",
-      "symfony/symfony": ">=2.5",
-      "symfony/config": ">=2.5",
-      "symfony/yaml": ">=2.5",
-      "symfony/security": ">=2.5",
-      "symfony/templating": ">=2.5",
-      "symfony/http-foundation": ">=2.5",
-      "symfony/http-kernel": ">=2.5",
-      "symfony/dependency-injection": ">=2.5",
-      "doctrine/common": ">=2.3"
+      "symfony/framework-bundle": "4.4.*",
+      "symfony/yaml": "4.4.*"
+      "symfony/security-bundle": "4.4.*",
+      "symfony/http-client": "4.4.*",
+      "symfony/twig-pack": "*",
+      "symfony/orm-pack": "*"
     },
     "autoload" : {
         "psr-0" : {
-            "JGM\\TableBundle" : ""
+            "Gus\\TableBundle" : ""
         }
     },
-    "target-dir" : "JGM/TableBundle"
+    "target-dir" : "Gus/TableBundle"
 }
