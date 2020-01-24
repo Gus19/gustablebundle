@@ -76,16 +76,17 @@ class TableBuilder
 		// Register standard columns.
 		$this->registeredColumns = $this->container->getParameter('gus_table.columns');
 	}
-	
-	/**
-	 * Adds a new column to the table.
-	 * 
-	 * @param string $type		Type of the column.
-	 * @param string $name		Name of the column.
-	 * @param array $options	Array with options for the column.
-	 * 
-	 * @return TableBuilder
-	 */
+
+  /**
+   * Adds a new column to the table.
+   *
+   * @param string $type Type of the column.
+   * @param string $name Name of the column.
+   * @param array $options Array with options for the column.
+   *
+   * @return TableBuilder
+   * @throws TableException
+   */
 	public function add($type, $name, array $options = array())
 	{
 		if(array_key_exists($name, $this->columns))
@@ -136,12 +137,7 @@ class TableBuilder
 	 */
 	public function removeColumn($columnName)
 	{
-		 @trigger_error(
-			'The method TableBuilder::removeColumn is deprecated since v1.3 and will be removed in 1.4.',
-			E_USER_DEPRECATED
-		);
-		 
-		if(array_key_exists($columnName, $this->columns))
+	    if(array_key_exists($columnName, $this->columns))
 		{
 			unset($this->columns[$columnName]);
 		}

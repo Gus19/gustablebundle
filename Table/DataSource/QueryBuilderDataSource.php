@@ -55,7 +55,7 @@ class QueryBuilderDataSource implements DataSourceInterface
 	{
 		$this->queryBuilder = $queryBuilder;
 		$this->joinTable = [];
-		
+
 		$this->operatorMap = array(
 			FilterOperator::EQ => '=',
 			FilterOperator::NOT_EQ => '!=',
@@ -64,15 +64,17 @@ class QueryBuilderDataSource implements DataSourceInterface
 			FilterOperator::LT => '<',
 			FilterOperator::LEQ => '<=',
 			FilterOperator::NOT_LIKE => 'not like',
-			FilterOperator::LIKE => 'like'
+			FilterOperator::LIKE => 'like',
+      FilterOperator::IN => 'in',
+      FilterOperator::NOT_IN => 'not in'
 		);
 	}
-	
+
 	public function getType()
 	{
 		return 'doctrine';
 	}
-	
+
 	public function getData(ContainerInterface $container, array $columns, array $filters = null, Pagination $pagination = null, Order $sortable = null)
 	{
 		if($this->queryBuilder === null)
@@ -118,17 +120,22 @@ class QueryBuilderDataSource implements DataSourceInterface
 		$queryBuilder = clone $this->queryBuilder;
 		
 		$aliases = $queryBuilder->getRootAliases();
-		
-		$queryBuilder->select(sprintf('count(%s) a', $aliases[0]));
-		
+
+    $isDistinct = $queryBuilder->getDQLPart("distinct");
+    if($isDistinct) {
+      $queryBuilder->select(sprintf('count(distinct %s) a', $aliases[0]));
+    }
+    else {
+      $queryBuilder->select(sprintf('count(%s) a', $aliases[0]));
+    }
+
 		$this->applyFilters($queryBuilder, $filters);
 		
 		try
 		{
 			$result = $queryBuilder->getQuery()->getSingleScalarResult();
-		} 
-		catch (NoResultException $ex) 
-		{
+		}
+		catch (NoResultException $ex) {
 			$result = 0;
 		}
 		
@@ -184,10 +191,19 @@ class QueryBuilderDataSource implements DataSourceInterface
 				{
 					$columnExpression = sprintf("lower(%s)", $columnExpression);
 				}
-				
+        /*if($filter->getOperator() === FilterOperator::IN || $filter->getOperator() === FilterOperator::NOT_IN)
+        {
+          $columnExpression = sprintf("(%s)", $columnExpression);
+        }*/
+
 				// Create the where or having term.
-				$term = sprintf("%s %s :%s", $columnExpression, $this->operatorMap[$filter->getOperator()], str_replace('.', '_', $filter->getName()));
-				
+        if($filter->getOperator() === FilterOperator::IN || $filter->getOperator() === FilterOperator::NOT_IN) {
+          $term = sprintf("%s %s (:%s)", $columnExpression, $this->operatorMap[ $filter->getOperator() ], str_replace('.', '_', $filter->getName()));
+        }
+        else {
+          $term = sprintf("%s %s :%s", $columnExpression, $this->operatorMap[ $filter->getOperator() ], str_replace('.', '_', $filter->getName()));
+        }
+
 				if($this->isAggregate($columnExpression))
 				{
 					$innerHaveParts[] = $term;
@@ -203,16 +219,17 @@ class QueryBuilderDataSource implements DataSourceInterface
 				$whereParts[] = sprintf('(%s)', implode(' or ', $innerWhereParts));
 				
 				// Add the filters value to the query builder parameters map.
-				if($filter->getOperator() === FilterOperator::LIKE || $filter->getOperator() === FilterOperator::NOT_LIKE)
-				{
+				if($filter->getOperator() === FilterOperator::LIKE || $filter->getOperator() === FilterOperator::NOT_LIKE) {
 					$queryBuilder->setParameter(str_replace('.', '_', $filter->getName()), '%' . strtolower($filter->getValue()) . '%');
 				}
-				else
-				{
+				/*else if($filter->getOperator() === FilterOperator::IN || $filter->getOperator() === FilterOperator::NOT_IN) {
+          $queryBuilder->setParameter(str_replace('.', '_', $filter->getName()), explode(",",$filter->getValue()));
+        }*/
+				else {
 					$queryBuilder->setParameter(str_replace('.', '_', $filter->getName()), $filter->getValue());
 				}
 			}
-			
+
 			if(count($innerHaveParts) > 0)
 			{
 				$haveParts[] = sprintf('(%s)', implode(' or ', $innerHaveParts));

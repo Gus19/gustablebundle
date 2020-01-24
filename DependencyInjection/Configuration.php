@@ -225,6 +225,7 @@ class Configuration implements ConfigurationInterface {
 	{
 		return array(
 			'text'		=> 'Gus\TableBundle\Table\Filter\TextFilter',
+			'number'		=> 'Gus\TableBundle\Table\Filter\NumberFilter',
 			'entity'	=> 'Gus\TableBundle\Table\Filter\EntityFilter',
 			'boolean'	=> 'Gus\TableBundle\Table\Filter\BooleanFilter',
 			'valued'	=> 'Gus\TableBundle\Table\Filter\ValuedFilter',

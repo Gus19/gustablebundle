@@ -274,7 +274,8 @@ abstract class AbstractFilter implements FilterInterface {
       'label_attr' => array('styles' => 'font-weight: bold'),
       'default_value' => null,
       'value_manipulator' => null,
-      'trans' => false
+      'trans' => false,
+      'multiple' => false
     ));
   }
 
@@ -336,11 +337,18 @@ abstract class AbstractFilter implements FilterInterface {
   }
 
   public function isActive() {
+    if(is_array($this->value)) {
+      return isset($this->value) && count($this->value) > 0;
+    }
     return isset($this->value) && strlen($this->value) > 0;
   }
-  
+
   public function isTrans() {
     return $this->options['trans'];
+  }
+
+  public function isMultiple() {
+    return $this->options['multiple'];
   }
 
 }

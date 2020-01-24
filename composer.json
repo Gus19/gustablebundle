@@ -15,7 +15,8 @@
         "symfony/framework-bundle": "~4.0",
         "symfony/http-kernel":      "~4.0",
         "symfony/validator":        "~4.0",
-        "symfony/twig-pack":        "*"
+        "symfony/twig-pack":        "*",
+        "symfony/polyfill-intl-messageformatter": "^1.13"
     },
     "autoload": {
         "psr-4" : {

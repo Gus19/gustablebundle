@@ -1,5 +1,5 @@
 {% block table_pagination %}
-  
+  {% apply spaceless %}
     <ul{{ {'class': classes['ul']|join(' ')}|format_attributes }}>
       {# Left arrow #}
       {% if currentPage == 0 %}
@@ -73,54 +73,54 @@
     </ul>
     
     <div{{ {'class': classes['ul']|join(' ') ~ ' pagination-result'}|format_attributes }}>
-      <span>{{ items }} / {{ 'table.result' | transchoice(total_items, {'%count%': total_items}) }}</span>
+      <span>{{ items }} / {{ 'table.result' | trans({'%count%': total_items}, 'gus_table') }}</span>
     </div>
-  
+  {% endapply %}
 {% endblock %}
 
 {% block table_pagination_option %}
-  
+  {% apply spaceless %}
     {{ table_pagination_option_begin(tableView) }}
     {{ table_pagination_option_label(tableView) }}
     {{ table_pagination_option_input(tableView) }}
     {{ table_pagination_option_button(tableView) }}
     {{ table_pagination_option_end(tableView) }}
-  
+  {% endapply %}
 {% endblock %}
 
 {% block table_pagination_option_begin %}
-  
+  {% apply spaceless %}
     <form method="post" name="{{ tableName }}_option">
       <input type="hidden" name="table_option_values_table_name" value="{{ tableName }}" />
-    
+    {% endapply %}
   {% endblock %}
 
   {% block table_pagination_option_label %}
-    
+    {% apply spaceless %}
       {% if label %}
         <label for="{{ tableName }}_option_values"{{ labelAttributes|format_attributes }}>{{ label }}</label>
       {% endif %}
-    
+    {% endapply %}
   {% endblock %}
 
   {% block table_pagination_option_input %}
-    
+    {% apply spaceless %}
       <select name="{{ tableName }}_option_values" id="{{ tableName }}_option_values"{{ attributes|format_attributes }}>
         {% for value in values %}
           <option{% if currentValue == value %} selected="selected"{% endif %}>{{ value }}</option>
         {% endfor %}
       </select>
-    
+    {% endapply %}
   {% endblock %}
 
   {% block table_pagination_option_button %}
-    
+    {% apply spaceless %}
       <input type="submit" name="submit_{{ tableName }}_option_values" value="{{ submitLabel }}"{{ submitAttributes|format_attributes }} />
-    
+    {% endapply %}
   {% endblock %}
 
   {% block table_pagination_option_end %}
-    
+    {% apply spaceless %}
     </form>
-  
+  {% endapply %}
 {% endblock %}

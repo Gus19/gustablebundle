@@ -78,7 +78,12 @@ class FilterBuilder
       'attr' => array(
         'class' => 'form-control'
       )
-    );              
+    );
+
+    if(array_key_exists('attr', $options)) {
+      $options['attr'] = array_merge($defaultOptions['attr'], $options['attr']);
+    }
+                
 		$filter->setOptions(array_merge($defaultOptions, $options));		
 		$this->filters[$name] = $filter;
 		

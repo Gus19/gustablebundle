@@ -75,7 +75,7 @@ class UrlHelper
 		// Cleaning up the parameters.
 		foreach($currentRouteParams as $key => $value)
 		{
-			if($value === null || trim($value) === '')
+			if($value === null /*|| trim($value) === ''*/)
 			{
 				unset($currentRouteParams[$key]);
 			}

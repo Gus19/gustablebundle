@@ -1,5 +1,8 @@
 {% block table %}
-  
+  {% apply spaceless %}
+    {% if isPaginatable %}
+      {{ table_pagination(view) }}
+    {% endif %}
     {{ table_begin(view, options) }}
     {{ table_head(view, options) }}
     {{ table_body(view, options) }}
@@ -7,21 +10,21 @@
     {% if isPaginatable %}
       {{ table_pagination(view) }}
     {% endif %}
-  
+  {% endapply %}
 {% endblock %}
 
 {% block table_begin %}
-  
+  {% apply spaceless %}
     {% if isSelectable %}
       <form name="form_selection_{{ name }}" method="post">
         <input type="hidden" name="is_selection_{{ name }}" value="{{ name }}" />
       {% endif %}
       <table id="{{ name }}"{{ attributes|format_attributes }}>
-      
+      {% endapply %}
     {% endblock %}
 
     {% block table_end %}
-      
+      {% apply spaceless %}
         {% if isSelectable and renderSelectionButtons %}
           <tfoot>
             <tr>
@@ -33,27 +36,23 @@
       {% if isSelectable %}
       </form>
     {% endif %}
-  
+  {% endapply %}
 {% endblock %}
 
 {% block table_head %}
-  
+  {% apply spaceless %}
     <thead>
       <tr>
         {% for column in columns %}
-          <th class="col-{{ loop.index}}" {{ column.headAttributes|format_attributes }}>
-            {% if column.label != null and column.label|trim|length != 0 %}
-              {{ column.label|trans }}
-            {% endif %}
-          </th>
+          <th class="col-{{ loop.index}}" {{ column.headAttributes|format_attributes }}>{{ column.label|trans }}</th>
         {% endfor %}
       </tr>
     </thead>
-  
+  {% endapply %}
 {% endblock %}
 
 {% block table_body %}
-  
+  {% apply spaceless %}
     <tbody>
       {% for row in rows %}
         <tr{{ tableView.rowAttributes(row)|format_attributes }}>
@@ -75,5 +74,5 @@
         </tr>
       {% endfor %}
     </tbody>
-  
+  {% endapply %}
 {% endblock %}

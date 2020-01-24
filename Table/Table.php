@@ -995,7 +995,8 @@ class Table
 				{
 					$requestParameterName = str_replace('.','_',$parameterName);
 				}
-				$values[$parameterName] = trim((string) $this->request->query->get($requestParameterName, ''));
+				//$values[$parameterName] = trim((string) $this->request->query->get($requestParameterName, ''));
+        $values[$parameterName] = $this->request->query->get($requestParameterName, '');
 			}
 
 			$filter->setValue($values);

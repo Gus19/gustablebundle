@@ -29,6 +29,8 @@ class FilterOperator
 	const GEQ		= 5;
 	const NOT_EQ	= 6;
 	const NOT_LIKE	= 7;
+	const IN = 8;
+	const NOT_IN = 9;
 	
 	/**
 	 * Ensures that the $operator is a valid filter operator.
@@ -37,7 +39,7 @@ class FilterOperator
 	 */
 	public static function validate($operator)
 	{
-		$validOperators = array(self::EQ, self::LIKE, self::LT, self::GT, self::LEQ, self::GEQ, self::NOT_EQ, self::NOT_LIKE);
+		$validOperators = array(self::EQ, self::LIKE, self::LT, self::GT, self::LEQ, self::GEQ, self::NOT_EQ, self::NOT_LIKE, self::IN, self::NOT_IN);
 		if(!in_array($operator, $validOperators))
 		{
 			TableException::operatorNotValid($operator, $validOperators);

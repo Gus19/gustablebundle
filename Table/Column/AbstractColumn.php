@@ -25,133 +25,122 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * @author	Julien Albinet <julien.albinet@gmail.com>
  * @since	1.0
  */
-abstract class AbstractColumn implements ColumnInterface
-{
-	/**
-	 * Resolver for the options.
-	 * 
-	 * @var OptionsResolver
-	 */
-	protected $optionsResolver;
-	
-	/**
-	 * Resolved options.
-	 * 
-	 * @var array
-	 */
-	protected $options;
-	
-	/**
-	 * @var string
-	 */
-	protected $name;
-	
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAttributes()
-	{
-		return $this->options['attr'];
-	}
+abstract class AbstractColumn implements ColumnInterface {
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getHeadAttributes()
-	{
-		return $this->options['head_attr'];
-	}
+    /**
+     * Resolver for the options.
+     * 
+     * @var OptionsResolver
+     */
+    protected $optionsResolver;
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getLabel()
-	{
-		return $this->options['label'];
-	}
+    /**
+     * Resolved options.
+     * 
+     * @var array
+     */
+    protected $options;
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getName()
-	{
-		return $this->name;
-	}
+    /**
+     * @var string
+     */
+    protected $name;
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function isSortable()
-	{
-		return $this->options['sortable'];
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function getAttributes() {
+        return $this->options['attr'];
+    }
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function setName($name)
-	{
-		$this->name = $name;
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function getHeadAttributes() {
+        return $this->options['head_attr'];
+    }
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function setOptions(array $options)
-	{
-		$this->optionsResolver = new OptionsResolver();
-		$this->configureOptions($this->optionsResolver);
-		
-		$this->options = $this->optionsResolver->resolve($options);
-	}
-  
-  public function getColumns() {
-    return $this->options['columns'];
-  }
-  
-  public function isTrans() {
-    return $this->options['trans'];
-  }
-	
-	protected function configureOptions(OptionsResolver $optionsResolver)
-	{
-		$optionsResolver->setDefaults(array(
-			'attr' => array(),
-			'head_attr' => array(),
-			'sortable' => true,
-			'label' => $this->getName(),
-      'columns' => null,
-      'trans' => false
-		));
-	}
-	
-	/**
-	 * Returns the value of the property.
-	 * 
-	 * @param Row $row
-	 * @param string $columnName
-	 * @return mixed
-	 */
-	protected function getValue(Row $row, $columnName = null)
-	{
-		if($columnName === null)
-		{
-			$columnName = $this->getName();
-		}
-		
-		$properties = explode(".", $columnName);
-		$value = $row->get($properties[0]);
-		$countProperties = count($properties);
-		for($i = 1; $i < $countProperties; $i++)
-		{
-			if($value === null)
-			{
-				return null;
-			}
-			
-			$value = ReflectionHelper::getPropertyOfEntity($value, $properties[$i]);
-		}
+    /**
+     * {@inheritdoc}
+     */
+    public function getLabel() {
+        return $this->options['label'];
+    }
 
-		return $value;
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function getName() {
+        return $this->name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isSortable() {
+        return $this->options['sortable'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOptions(array $options) {
+        $this->optionsResolver = new OptionsResolver();
+        $this->configureOptions($this->optionsResolver);
+
+        $this->options = $this->optionsResolver->resolve($options);
+    }
+
+    public function getColumns() {
+        return $this->options['columns'];
+    }
+
+    public function isTrans() {
+        return $this->options['trans'];
+    }
+
+    protected function configureOptions(OptionsResolver $optionsResolver) {
+        $optionsResolver->setDefaults(array(
+            'attr' => array(),
+            'head_attr' => array(),
+            'sortable' => true,
+            'label' => $this->getName(),
+            'columns' => null,
+            'trans' => false
+        ));
+    }
+
+    /**
+     * Returns the value of the property.
+     * 
+     * @param Row $row
+     * @param string $columnName
+     * @return mixed
+     */
+    protected function getValue(Row $row, $columnName = null) {
+        if ($columnName === null) {
+            $columnName = $this->getName();
+        }
+
+        $properties = explode(".", $columnName);
+        $value = $row->get($properties[0]);
+        $countProperties = count($properties);
+        for ($i = 1; $i < $countProperties; $i++) {
+            if ($value === null) {
+                return null;
+            }
+
+            $value = ReflectionHelper::getPropertyOfEntity($value, $properties[$i]);
+        }
+
+        return $value;
+    }
+
 }

@@ -60,7 +60,7 @@ abstract class AbstractValuedFilter extends AbstractFilter
 	 */
 	protected function getAvailableWidgets()
 	{
-		return array('select', 'list', 'choice');
+		return array('select', 'list', 'choice', 'checkboxes');
 	}
 	
 	public function getWidgetBlockName()
