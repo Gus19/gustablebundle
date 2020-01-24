@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\DataSource;
+namespace Gus\TableBundle\Table\DataSource;
 
-use JGM\TableBundle\Table\Model\SortableOptionsContainer;
-use JGM\TableBundle\Table\Order\Model\Order;
-use JGM\TableBundle\Table\Pagination\Model\Pagination;
+use Gus\TableBundle\Table\Model\SortableOptionsContainer;
+use Gus\TableBundle\Table\Order\Model\Order;
+use Gus\TableBundle\Table\Pagination\Model\Pagination;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Type;
+namespace Gus\TableBundle\Table\Type;
 
 use Doctrine\ORM\EntityManager;
-use JGM\TableBundle\Table\DataSource\DataSourceInterface;
-use JGM\TableBundle\Table\Row\Row;
-use JGM\TableBundle\Table\TableBuilder;
+use Gus\TableBundle\Table\DataSource\DataSourceInterface;
+use Gus\TableBundle\Table\Row\Row;
+use Gus\TableBundle\Table\TableBuilder;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

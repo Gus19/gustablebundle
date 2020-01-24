@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Row;
+namespace Gus\TableBundle\Table\Row;
 
-use JGM\TableBundle\Table\Utils\ReflectionHelper;
+use Gus\TableBundle\Table\Utils\ReflectionHelper;
 
 /**
  * Represents a row of tabla data.

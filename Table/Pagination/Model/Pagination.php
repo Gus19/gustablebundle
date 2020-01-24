@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Pagination\Model;
+namespace Gus\TableBundle\Table\Pagination\Model;
 
-use JGM\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
+use Gus\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
 
 /**
  * Model for pagination information.

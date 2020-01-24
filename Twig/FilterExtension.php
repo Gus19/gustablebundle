@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Twig;
+namespace Gus\TableBundle\Twig;
 
-use JGM\TableBundle\DependencyInjection\Service\TableStopwatchService;
-use JGM\TableBundle\Table\Filter\FilterInterface;
-use JGM\TableBundle\Table\Filter\OptionsResolver\FilterOptions;
-use JGM\TableBundle\Table\TableException;
-use JGM\TableBundle\Table\TableView;
-use JGM\TableBundle\Table\Utils\UrlHelper;
-use Twig_Environment;
-use Twig_SimpleFunction;
+use Gus\TableBundle\DependencyInjection\Service\TableStopwatchService;
+use Gus\TableBundle\Table\Filter\FilterInterface;
+use Gus\TableBundle\Table\Filter\OptionsResolver\FilterOptions;
+use Gus\TableBundle\Table\TableException;
+use Gus\TableBundle\Table\TableView;
+use Gus\TableBundle\Table\Utils\UrlHelper;
+use \Twig\Environment as Twig_Environment;
+use \Twig\TwigFunction as Twig_SimpleFunction;
 
 /**
  * Twig extension for render the table filter views.
@@ -106,7 +106,7 @@ class FilterExtension extends AbstractTwigExtension
 		return $content;
 	}
 	
-	public function getFilterWidgetContent(\Twig_Environment $environment, FilterInterface $filter)
+	public function getFilterWidgetContent(Twig_Environment $environment, FilterInterface $filter)
 	{
 		if($this->tableView === null)
 		{
@@ -125,7 +125,7 @@ class FilterExtension extends AbstractTwigExtension
 		return $content;
 	}
 	
-	public function getFilterLabelContent(\Twig_Environment $environment, FilterInterface $filter)
+	public function getFilterLabelContent(Twig_Environment $environment, FilterInterface $filter)
 	{
 		if($this->tableView === null)
 		{
@@ -144,7 +144,7 @@ class FilterExtension extends AbstractTwigExtension
 		return $content;
 	}
 	
-	public function getFilterRowContent(\Twig_Environment $environment, FilterInterface $filter)
+	public function getFilterRowContent(Twig_Environment $environment, FilterInterface $filter)
 	{
 		if($this->tableView === null)
 		{
@@ -161,7 +161,7 @@ class FilterExtension extends AbstractTwigExtension
 		));
 	}
 	
-	public function getFilterRowsContent(\Twig_Environment $environment, $tableViewOrFilterArray)
+	public function getFilterRowsContent(Twig_Environment $environment, $tableViewOrFilterArray)
 	{
 		if($this->tableView === null)
 		{
@@ -192,7 +192,7 @@ class FilterExtension extends AbstractTwigExtension
 		));
 	}
 	
-	public function getFilterSubmitButtonContent(\Twig_Environment $environment, TableView $tableView)
+	public function getFilterSubmitButtonContent(Twig_Environment $environment, TableView $tableView)
 	{
 		if($tableView->hasFilter() === false)
 		{
@@ -213,7 +213,7 @@ class FilterExtension extends AbstractTwigExtension
 		return $content;
 	}
 	
-	public function getFilterResetLinkContent(\Twig_Environment $environment, TableView $tableView)
+	public function getFilterResetLinkContent(Twig_Environment $environment, TableView $tableView)
 	{
 		if($tableView->hasFilter() === false)
 		{
@@ -241,7 +241,7 @@ class FilterExtension extends AbstractTwigExtension
 		return $content;
 	}
 	
-	public function getFilterEndContent(\Twig_Environment $environment, TableView $tableView)
+	public function getFilterEndContent(Twig_Environment $environment, TableView $tableView)
 	{
 		$this->tableView = null;
 		

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\DependencyInjection\Service;
+namespace Gus\TableBundle\DependencyInjection\Service;
 
 /**
  * Service for collecting hints during the 

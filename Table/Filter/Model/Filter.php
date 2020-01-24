@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter\Model;
+namespace Gus\TableBundle\Table\Filter\Model;
 
-use JGM\TableBundle\Table\Filter\OptionsResolver\FilterOptions;
+use Gus\TableBundle\Table\Filter\OptionsResolver\FilterOptions;
 
 /**
  * Container for options of the filter component.

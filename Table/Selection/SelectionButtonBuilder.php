@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Selection;
+namespace Gus\TableBundle\Table\Selection;
 
-use JGM\TableBundle\Table\AccessValidation\AccessValidatorFactory;
-use JGM\TableBundle\Table\Selection\Button\SubmitButton;
+use Gus\TableBundle\Table\AccessValidation\AccessValidatorFactory;
+use Gus\TableBundle\Table\Selection\Button\SubmitButton;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 

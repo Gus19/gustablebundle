@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Column\ContentGrabber;
+namespace Gus\TableBundle\Table\Column\ContentGrabber;
 
-use JGM\TableBundle\Table\Row\Row;
-use JGM\TableBundle\Table\Column\ColumnInterface;
+use Gus\TableBundle\Table\Row\Row;
+use Gus\TableBundle\Table\Column\ColumnInterface;
 
 /**
  * ContentGrabber interface.

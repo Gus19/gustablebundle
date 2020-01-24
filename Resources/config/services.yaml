@@ -1,0 +1,63 @@
+services:
+
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+    public: true
+
+  gus.url_helper:
+    class: Gus\TableBundle\Table\Utils\UrlHelper
+    arguments: ["@request_stack","@router"]
+  gus.table_context:
+    class: Gus\TableBundle\DependencyInjection\Service\TableContext
+  gus.table_collector:
+    class: Gus\TableBundle\DataCollector\TableCollector
+    arguments: ["@gus.table_context","@gus.table_stopwatch","@gus.table_hint"]
+    public: false
+    tags:
+      - { name: data_collector, template: '@GusTable/DataCollector/table_collector', id: 'gus.table_collector' }
+  gus.table_stopwatch:
+    class: Gus\TableBundle\DependencyInjection\Service\TableStopwatchService
+    arguments: ["%kernel.debug%"]
+  gus.table_factory:
+    class: Gus\TableBundle\DependencyInjection\Service\TableFactoryService
+    arguments: ["@service_container","@doctrine.orm.entity_manager","@request_stack","@router","@gus.table_stopwatch","@gus.table_hint"]
+    tags:
+      - { name: gus.table, channel: gus }
+  gus.table: '@gus.table_factory'
+  gus.table_hint:
+    class: Gus\TableBundle\DependencyInjection\Service\TableHintService
+    arguments: ["%kernel.debug%"]
+  gus.table.twig.attributes_formater:
+    class: Gus\TableBundle\Twig\AttributesFormaterExtension
+    tags:
+      - { name: twig.extension }
+  gus.table.twig.order:
+    class: Gus\TableBundle\Twig\OrderExtension
+    arguments: ["@gus.url_helper", "@gus.table_stopwatch"]
+    tags:
+      - { name: twig.extension }
+  gus.table.twig.pagination:
+    class: Gus\TableBundle\Twig\PaginationExtension
+    arguments: ["@gus.url_helper", "@gus.table_stopwatch"]
+    tags:
+      - { name: twig.extension }
+  gus.table.twig:
+    class: Gus\TableBundle\Twig\TableExtension
+    arguments: ["@gus.url_helper", "@gus.table_stopwatch"]
+    tags:
+      - { name: twig.extension }
+  gus.table.twig.filter:
+    class: Gus\TableBundle\Twig\FilterExtension
+    arguments: ["@gus.url_helper", "@gus.table_stopwatch"]
+    tags:
+      - { name: twig.extension }
+  gus.table.twig.selection:
+    class: Gus\TableBundle\Twig\SelectionExtension
+    arguments: ["@gus.url_helper", "@gus.table_stopwatch"]
+    tags:
+      - { name: twig.extension }
+  gus.table.response_listener:
+    class: Gus\TableBundle\DependencyInjection\Listener\ResponseListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.response }

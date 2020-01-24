@@ -1,6 +1,6 @@
 <?php
 
-namespace JGM\TableBundle;
+namespace Gus\TableBundle;
 
 /**
  * Information holder for the version in debug output.

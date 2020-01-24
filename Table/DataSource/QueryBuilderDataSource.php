@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\DataSource;
+namespace Gus\TableBundle\Table\DataSource;
 
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
-use JGM\TableBundle\Table\Filter\EntityFilter;
-use JGM\TableBundle\Table\Filter\FilterInterface;
-use JGM\TableBundle\Table\Filter\FilterOperator;
-use JGM\TableBundle\Table\Order\Model\Order;
-use JGM\TableBundle\Table\Pagination\Model\Pagination;
-use JGM\TableBundle\Table\TableException;
+use Gus\TableBundle\Table\Filter\EntityFilter;
+use Gus\TableBundle\Table\Filter\FilterInterface;
+use Gus\TableBundle\Table\Filter\FilterOperator;
+use Gus\TableBundle\Table\Order\Model\Order;
+use Gus\TableBundle\Table\Pagination\Model\Pagination;
+use Gus\TableBundle\Table\TableException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -77,7 +77,7 @@ class QueryBuilderDataSource implements DataSourceInterface
 	{
 		if($this->queryBuilder === null)
 		{
-			TableException::noQueryBuilder($container->get('jgm.table_context')->getCurrentTableName());
+			TableException::noQueryBuilder($container->get('gus.table_context')->getCurrentTableName());
 		}
 		
 		$queryBuilder = clone $this->queryBuilder;
@@ -112,7 +112,7 @@ class QueryBuilderDataSource implements DataSourceInterface
 	{
 		if($this->queryBuilder === null)
 		{
-			TableException::noQueryBuilder($container->get('jgm.table_context')->getCurrentTableName());
+			TableException::noQueryBuilder($container->get('gus.table_context')->getCurrentTableName());
 		}
 		
 		$queryBuilder = clone $this->queryBuilder;

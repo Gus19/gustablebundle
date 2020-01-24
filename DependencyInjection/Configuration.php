@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\DependencyInjection;
+namespace Gus\TableBundle\DependencyInjection;
 
-use JGM\TableBundle\Table\Filter\OptionsResolver\FilterOptions;
-use JGM\TableBundle\Table\OptionsResolver\TableOptions;
-use JGM\TableBundle\Table\Order\OptionsResolver\OrderOptions;
-use JGM\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
+use Gus\TableBundle\Table\Filter\OptionsResolver\FilterOptions;
+use Gus\TableBundle\Table\OptionsResolver\TableOptions;
+use Gus\TableBundle\Table\Order\OptionsResolver\OrderOptions;
+use Gus\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -24,37 +24,37 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  * @author	Julien Albinet <julien.albinet@gmail.com>
  * @since	1.0
  */
-class Configuration implements ConfigurationInterface
-{
-    /**
-     * {@inheritDoc}
-     */
-    public function getConfigTreeBuilder()
-    {
-        $treeBuilder = new TreeBuilder(); 
-		$rootNode = $treeBuilder->root('jgm_table');
+class Configuration implements ConfigurationInterface {
+  /**
+  * {@inheritDoc}
+  */
+  public function getConfigTreeBuilder()  {
+    //throw new \Exception("Ici !");
+    //$treeBuilder = new TreeBuilder();
+    //$rootNode = $treeBuilder->root('gus_table');
+    $treeBuilder = new TreeBuilder('gus_test');
 
-		$rootNode
+    $treeBuilder->getRootNode()
 			->children()
-				
+
 				->arrayNode('columns')
 					->prototype('scalar')->end()
 				->end()
-				
+
 				->arrayNode('filters')
 					->prototype('scalar')->end()
 				->end()
-				
+
 				->arrayNode('filter_expressions')
 					->prototype('array')
 						->prototype('scalar')->end()
 					->end()
 				->end()
-				
+
 				->arrayNode('default_options')
 					->children()
 						->scalarNode(TableOptions::TEMPLATE)
-							->defaultValue('JGMTableBundle:Blocks:table.html.twig')
+							->defaultValue('@GusTable/Blocks/table.html.twig')
 						->end()
 						->scalarNode(TableOptions::EMPTY_VALUE)
 							->defaultValue('table.noresult')
@@ -86,11 +86,11 @@ class Configuration implements ConfigurationInterface
 					->end()
 					->addDefaultsIfNotSet()
 				->end()
-				
+
 				->arrayNode('filter_default_options')
 					->children()
 						->scalarNode(FilterOptions::TEMPLATE)
-							->defaultValue('JGMTableBundle:Blocks:filter.html.twig')
+							->defaultValue('@GusTable/Blocks/filter.html.twig')
 						->end()
 						->scalarNode(FilterOptions::SUBMIT_LABEL)
 							->defaultValue('submit')
@@ -107,11 +107,11 @@ class Configuration implements ConfigurationInterface
 					->end()
 					->addDefaultsIfNotSet()
 				->end()
-				
+
 				->arrayNode('pagination_default_options')
 					->children()
 						->scalarNode(PaginationOptions::TEMPLATE)
-							->defaultValue('JGMTableBundle:Blocks:pagination.html.twig')
+							->defaultValue('@GusTable/Blocks/pagination.html.twig')
 						->end()
 						->scalarNode(PaginationOptions::PARAM)
 							->defaultValue('page')
@@ -143,7 +143,7 @@ class Configuration implements ConfigurationInterface
 						->integerNode(PaginationOptions::MAX_PAGES)
 							->defaultValue(null)
 						->end()
-				
+
 						->arrayNode(PaginationOptions::OPTION_VALUES)
 							->prototype('integer')->end()
 						->end()
@@ -165,11 +165,11 @@ class Configuration implements ConfigurationInterface
 					->end()
 					->addDefaultsIfNotSet()
 				->end()
-				
+
 				->arrayNode('order_default_options')
 					->children()
 						->scalarNode(OrderOptions::TEMPLATE)
-							->defaultValue('JGMTableBundle:Blocks:order.html.twig')
+							->defaultValue('@GusTable/Blocks/order.html.twig')
 						->end()
 						->scalarNode(OrderOptions::PARAM_DIRECTION)
 							->defaultValue('direction')
@@ -198,49 +198,49 @@ class Configuration implements ConfigurationInterface
 					->end()
 					->addDefaultsIfNotSet()
 				->end()
-				
+
 			->end();
 
         return $treeBuilder;
     }
-	
-	public function getDefaultColumns() 
+
+	public function getDefaultColumns()
 	{
 		return array(
-			'array'		=> 'JGM\TableBundle\Table\Column\ArrayColumn',
-			'boolean'	=> 'JGM\TableBundle\Table\Column\BooleanColumn',
-			'content'	=> 'JGM\TableBundle\Table\Column\ContentColumn',
-			'counter'	=> 'JGM\TableBundle\Table\Column\CounterColumn',
-			'date'		=> 'JGM\TableBundle\Table\Column\DateColumn',
-			'entity'	=> 'JGM\TableBundle\Table\Column\EntityColumn',
-			'number'	=> 'JGM\TableBundle\Table\Column\NumberColumn',
-			'text'		=> 'JGM\TableBundle\Table\Column\TextColumn',
-			'twig'		=> 'JGM\TableBundle\Table\Column\TwigColumn',
-			'url'		=> 'JGM\TableBundle\Table\Column\UrlColumn',
-			'selection'	=> 'JGM\TableBundle\Table\Selection\Column\SelectionColumn'
+			'array'		=> 'Gus\TableBundle\Table\Column\ArrayColumn',
+			'boolean'	=> 'Gus\TableBundle\Table\Column\BooleanColumn',
+			'content'	=> 'Gus\TableBundle\Table\Column\ContentColumn',
+			'counter'	=> 'Gus\TableBundle\Table\Column\CounterColumn',
+			'date'		=> 'Gus\TableBundle\Table\Column\DateColumn',
+			'entity'	=> 'Gus\TableBundle\Table\Column\EntityColumn',
+			'number'	=> 'Gus\TableBundle\Table\Column\NumberColumn',
+			'text'		=> 'Gus\TableBundle\Table\Column\TextColumn',
+			'twig'		=> 'Gus\TableBundle\Table\Column\TwigColumn',
+			'url'		=> 'Gus\TableBundle\Table\Column\UrlColumn',
+			'selection'	=> 'Gus\TableBundle\Table\Selection\Column\SelectionColumn'
 		);
 	}
-	
+
 	public function getDefaultFilters()
 	{
 		return array(
-			'text'		=> 'JGM\TableBundle\Table\Filter\TextFilter',
-			'entity'	=> 'JGM\TableBundle\Table\Filter\EntityFilter',
-			'boolean'	=> 'JGM\TableBundle\Table\Filter\BooleanFilter',
-			'valued'	=> 'JGM\TableBundle\Table\Filter\ValuedFilter',
-			'date'		=> 'JGM\TableBundle\Table\Filter\DateFilter'
+			'text'		=> 'Gus\TableBundle\Table\Filter\TextFilter',
+			'entity'	=> 'Gus\TableBundle\Table\Filter\EntityFilter',
+			'boolean'	=> 'Gus\TableBundle\Table\Filter\BooleanFilter',
+			'valued'	=> 'Gus\TableBundle\Table\Filter\ValuedFilter',
+			'date'		=> 'Gus\TableBundle\Table\Filter\DateFilter'
 		);
 	}
-	
+
 	public function getDefaultFilterExpressionManipulators()
 	{
 		return array(
 			'doctrine'	=> array(
-				'JGM\TableBundle\Table\Filter\ExpressionManipulator\DoctrineCountExpressionManipulator',
-				'JGM\TableBundle\Table\Filter\ExpressionManipulator\DoctrineSumExpressionManipulator',
-				'JGM\TableBundle\Table\Filter\ExpressionManipulator\DoctrineMinExpressionManipulator',
-				'JGM\TableBundle\Table\Filter\ExpressionManipulator\DoctrineMaxExpressionManipulator',
-				'JGM\TableBundle\Table\Filter\ExpressionManipulator\DoctrineAvgExpressionManipulator'
+				'Gus\TableBundle\Table\Filter\ExpressionManipulator\DoctrineCountExpressionManipulator',
+				'Gus\TableBundle\Table\Filter\ExpressionManipulator\DoctrineSumExpressionManipulator',
+				'Gus\TableBundle\Table\Filter\ExpressionManipulator\DoctrineMinExpressionManipulator',
+				'Gus\TableBundle\Table\Filter\ExpressionManipulator\DoctrineMaxExpressionManipulator',
+				'Gus\TableBundle\Table\Filter\ExpressionManipulator\DoctrineAvgExpressionManipulator'
 			)
 		);
 	}

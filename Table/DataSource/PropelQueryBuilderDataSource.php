@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\DataSource;
+namespace Gus\TableBundle\Table\DataSource;
 
-use JGM\TableBundle\Table\DataSource\ContainerInterace;
-use JGM\TableBundle\Table\DataSource\DataSourceInterface;
-use JGM\TableBundle\Table\Model\SortableOptionsContainer;
-use JGM\TableBundle\Table\Order\Model\Order;
-use JGM\TableBundle\Table\Pagination\Model\Pagination;
-use JGM\TableBundle\Table\PropelQueryBuilder\PropelQueryBuilder;
-use JGM\TableBundle\Table\TableException;
+use Gus\TableBundle\Table\DataSource\ContainerInterace;
+use Gus\TableBundle\Table\DataSource\DataSourceInterface;
+use Gus\TableBundle\Table\Model\SortableOptionsContainer;
+use Gus\TableBundle\Table\Order\Model\Order;
+use Gus\TableBundle\Table\Pagination\Model\Pagination;
+use Gus\TableBundle\Table\PropelQueryBuilder\PropelQueryBuilder;
+use Gus\TableBundle\Table\TableException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -57,7 +57,7 @@ class PropelQueryBuilderDataSource implements DataSourceInterface
     {
         if($this->query === null)
         {
-            TableException::noQuery($container->get('jgm.table_context')->getCurrentTableName());
+            TableException::noQuery($container->get('gus.table_context')->getCurrentTableName());
         }
         $query = clone $this->query;
 

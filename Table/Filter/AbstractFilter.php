@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter;
+namespace Gus\TableBundle\Table\Filter;
 
-use JGM\TableBundle\Table\DataSource\DataSourceInterface;
-use JGM\TableBundle\Table\Filter\ExpressionManipulator\ExpressionManipulatorInterface;
-use JGM\TableBundle\Table\Filter\ValueManipulator\ValueManipulatorInterface;
+use Gus\TableBundle\Table\DataSource\DataSourceInterface;
+use Gus\TableBundle\Table\Filter\ExpressionManipulator\ExpressionManipulatorInterface;
+use Gus\TableBundle\Table\Filter\ValueManipulator\ValueManipulatorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -329,7 +329,7 @@ abstract class AbstractFilter implements FilterInterface {
 
   protected function getAllFilterExpressions() {
     if ($this->allFilterExpressions === null) {
-      $this->allFilterExpressions = $this->container->getParameter('jgm_table.filter_expressions');
+      $this->allFilterExpressions = $this->container->getParameter('gus_table.filter_expressions');
     }
 
     return $this->allFilterExpressions;

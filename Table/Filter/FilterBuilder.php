@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter;
+namespace Gus\TableBundle\Table\Filter;
 
-use JGM\TableBundle\Table\Filter\FilterInterface;
-use JGM\TableBundle\Table\TableException;
+use Gus\TableBundle\Table\Filter\FilterInterface;
+use Gus\TableBundle\Table\TableException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -42,7 +42,7 @@ class FilterBuilder
 	{
 		$this->filters = array();
 		
-		$this->registeredFilters = $container->getParameter('jgm_table.filters');
+		$this->registeredFilters = $container->getParameter('gus_table.filters');
 		
 		$this->container = $container;
 	}
@@ -51,13 +51,13 @@ class FilterBuilder
 	{
 		if(array_key_exists($name, $this->filters))
 		{
-			TableException::duplicatedFilterName($this->container->get('jgm.table_context')->getCurrentTableName(), $name);
+			TableException::duplicatedFilterName($this->container->get('gus.table_context')->getCurrentTableName(), $name);
 		}
 		
 		$type = strtolower($type);
 		if(!array_key_exists($type, $this->registeredFilters))
 		{
-			TableException::filterTypeNotAllowed($this->container->get('jgm.table_context')->getCurrentTableName(), $type, array_keys($this->registeredFilters));
+			TableException::filterTypeNotAllowed($this->container->get('gus.table_context')->getCurrentTableName(), $type, array_keys($this->registeredFilters));
 		}
 		
 		$filter = new $this->registeredFilters[$type]($this->container);
@@ -66,7 +66,7 @@ class FilterBuilder
 		if(!$filter instanceof FilterInterface)
 		{
 			TableException::filterClassNotImplementingInterface(
-				$this->container->get('jgm.table_context')->getCurrentTableName(), 
+				$this->container->get('gus.table_context')->getCurrentTableName(),
 				$filter
 			);
 		}

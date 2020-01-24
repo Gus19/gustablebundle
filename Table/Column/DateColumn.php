@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Column;
+namespace Gus\TableBundle\Table\Column;
 
 use DateTime;
-use JGM\TableBundle\Table\Row\Row;
+use Gus\TableBundle\Table\Row\Row;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

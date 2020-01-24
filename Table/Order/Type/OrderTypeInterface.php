@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Order\Type;
+namespace Gus\TableBundle\Table\Order\Type;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

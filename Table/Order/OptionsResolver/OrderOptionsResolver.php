@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Order\OptionsResolver;
+namespace Gus\TableBundle\Table\Order\OptionsResolver;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,7 +26,7 @@ class OrderOptionsResolver extends OptionsResolver
 {
 	function __construct(ContainerInterface $container) 
 	{
-		$globalDefaults = $container->getParameter('jgm_table.order_default_options');
+		$globalDefaults = $container->getParameter('gus_table.order_default_options');
 		
 		$this->setDefaults(array(
 			OrderOptions::TEMPLATE => $globalDefaults[OrderOptions::TEMPLATE],

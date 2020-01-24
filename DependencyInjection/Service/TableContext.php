@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\DependencyInjection\Service;
+namespace Gus\TableBundle\DependencyInjection\Service;
 
-use JGM\TableBundle\Table\Table;
+use Gus\TableBundle\Table\Table;
 
 /**
  * The TableContext holds tables while creating them

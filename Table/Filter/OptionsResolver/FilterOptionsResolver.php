@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter\OptionsResolver;
+namespace Gus\TableBundle\Table\Filter\OptionsResolver;
 
-use JGM\TableBundle\Table\Filter\Model\Filter;
+use Gus\TableBundle\Table\Filter\Model\Filter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,7 +26,7 @@ class FilterOptionsResolver extends OptionsResolver
 {
 	function __construct(ContainerInterface $container) 
 	{
-		$globalDefaults = $container->getParameter('jgm_table.filter_default_options');
+		$globalDefaults = $container->getParameter('gus_table.filter_default_options');
 		
 		$this->setDefaults(array(
 			'template' => $globalDefaults['template'],

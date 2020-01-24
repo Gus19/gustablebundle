@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Test;
+namespace Gus\TableBundle\Test;
 
-use JGM\TableBundle\Table\Filter\FilterOperator;
-use JGM\TableBundle\Table\PropelQueryBuilder\PropelQueryBuilder;
+use Gus\TableBundle\Table\Filter\FilterOperator;
+use Gus\TableBundle\Table\PropelQueryBuilder\PropelQueryBuilder;
 
 /**
  * @author	Daniel Purrucker <daniel.purrucker@nordakademie.de>

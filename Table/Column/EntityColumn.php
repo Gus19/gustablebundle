@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Column;
+namespace Gus\TableBundle\Table\Column;
 
-use JGM\TableBundle\Table\Row\Row;
-use JGM\TableBundle\Table\Utils\ReflectionHelper;
+use Gus\TableBundle\Table\Row\Row;
+use Gus\TableBundle\Table\Utils\ReflectionHelper;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

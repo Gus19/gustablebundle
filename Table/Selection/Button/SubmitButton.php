@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Selection\Button;
+namespace Gus\TableBundle\Table\Selection\Button;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

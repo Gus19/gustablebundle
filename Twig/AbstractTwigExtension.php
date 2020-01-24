@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Twig;
+namespace Gus\TableBundle\Twig;
 
-use JGM\TableBundle\DependencyInjection\Service\TableStopwatchService;
-use JGM\TableBundle\Table\Utils\UrlHelper;
-use Twig_Environment;
-use Twig_Extension;
+use Gus\TableBundle\DependencyInjection\Service\TableStopwatchService;
+use Gus\TableBundle\Table\Utils\UrlHelper;
+use Twig\Extension\AbstractExtension as Twig_Extension;
+use \Twig\Environment as Twig_Environment;
 
 /**
  * Base class for any twig extension, provided by this bundle.
@@ -68,7 +68,7 @@ abstract class AbstractTwigExtension extends Twig_Extension
 	protected function loadTemplate(Twig_Environment $environment, $templateName) 
 	{
 		if(array_key_exists($templateName, $this->templates) === false) {
-			$this->templates[$templateName] = $environment->loadTemplate($templateName);
+			$this->templates[$templateName] = $environment->load($templateName);
 		}
 		
 		return $this->templates[$templateName];

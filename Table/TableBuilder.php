@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table;
+namespace Gus\TableBundle\Table;
 
-use JGM\TableBundle\Table\AccessValidation\AccessValidatorFactory;
-use JGM\TableBundle\Table\Column\ColumnInterface;
+use Gus\TableBundle\Table\AccessValidation\AccessValidatorFactory;
+use Gus\TableBundle\Table\Column\ColumnInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -74,7 +74,7 @@ class TableBuilder
 		$this->columns = array();
 		
 		// Register standard columns.
-		$this->registeredColumns = $this->container->getParameter('jgm_table.columns');
+		$this->registeredColumns = $this->container->getParameter('gus_table.columns');
 	}
 	
 	/**
@@ -90,13 +90,13 @@ class TableBuilder
 	{
 		if(array_key_exists($name, $this->columns))
 		{
-			TableException::duplicatedColumnName($this->container->get('jgm.table_context')->getCurrentTableName(), $name);
+			TableException::duplicatedColumnName($this->container->get('gus.table_context')->getCurrentTableName(), $name);
 		}
 		
 		$type = strtolower($type);
 		if(!array_key_exists($type, $this->registeredColumns))
 		{
-			TableException::columnTypeNotAllowed($this->container->get('jgm.table_context')->getCurrentTableName(), $type);
+			TableException::columnTypeNotAllowed($this->container->get('gus.table_context')->getCurrentTableName(), $type);
 		}
 		
 		// Check the columns access rights and delete option, if it exists.

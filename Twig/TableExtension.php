@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Twig;
+namespace Gus\TableBundle\Twig;
 
-use JGM\TableBundle\DependencyInjection\Service\TableStopwatchService;
-use JGM\TableBundle\Table\OptionsResolver\TableOptions;
-use JGM\TableBundle\Table\Order\Model\Order;
-use JGM\TableBundle\Table\Order\OptionsResolver\OrderOptions;
-use JGM\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
-use JGM\TableBundle\Table\TableView;
-use JGM\TableBundle\Table\Utils\UrlHelper;
-use Twig_Environment;
-use Twig_SimpleFunction;
+use Gus\TableBundle\DependencyInjection\Service\TableStopwatchService;
+use Gus\TableBundle\Table\OptionsResolver\TableOptions;
+use Gus\TableBundle\Table\Order\Model\Order;
+use Gus\TableBundle\Table\Order\OptionsResolver\OrderOptions;
+use Gus\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
+use Gus\TableBundle\Table\TableView;
+use Gus\TableBundle\Table\Utils\UrlHelper;
+use \Twig\Environment as Twig_Environment;
+use \Twig\TwigFunction as Twig_SimpleFunction;
 
 /**
  * Twig extension for render the table view
@@ -75,7 +75,7 @@ class TableExtension extends AbstractTwigExtension
 		return $content;
 	}
 	
-	public function getTableHeadContent(\Twig_Environment $environment, TableView $tableView, $options = array())
+	public function getTableHeadContent(Twig_Environment $environment, TableView $tableView, $options = array())
 	{
 		$templateName = $tableView->getTableOption(TableOptions::TEMPLATE);
 		$viewParameters = array(
@@ -124,7 +124,7 @@ class TableExtension extends AbstractTwigExtension
 		return $content;
 	}
 	
-	public function getTableBodyContent(\Twig_Environment $environment, TableView $tableView, $options = array())
+	public function getTableBodyContent(Twig_Environment $environment, TableView $tableView, $options = array())
 	{
 		$template = $this->loadTemplate($environment, $tableView->getTableOption(TableOptions::TEMPLATE));
 		$content = $template->renderBlock('table_body', array(
@@ -138,7 +138,7 @@ class TableExtension extends AbstractTwigExtension
 		return $content;
 	}
 	
-	public function getTableEndContent(\Twig_Environment $environment, TableView $tableView, $renderSelectionButtons = true, $options = array())
+	public function getTableEndContent(Twig_Environment $environment, TableView $tableView, $renderSelectionButtons = true, $options = array())
 	{
 		$template = $this->loadTemplate($environment, $tableView->getTableOption(TableOptions::TEMPLATE));
 		$content = $template->renderBlock('table_end', array(

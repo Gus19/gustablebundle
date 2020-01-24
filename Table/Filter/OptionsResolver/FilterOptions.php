@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter\OptionsResolver;
+namespace Gus\TableBundle\Table\Filter\OptionsResolver;
 
 /**
  * Holder class for filter options.

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter\ExpressionManipulator;
+namespace Gus\TableBundle\Table\Filter\ExpressionManipulator;
 
 /**
  * Interface for manipulators, which can manipulate

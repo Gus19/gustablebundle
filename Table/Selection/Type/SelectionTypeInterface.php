@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Selection\Type;
+namespace Gus\TableBundle\Table\Selection\Type;
 
-use JGM\TableBundle\Table\Selection\SelectionButtonBuilder;
+use Gus\TableBundle\Table\Selection\SelectionButtonBuilder;
 
 /**
  * Interface for table types, which want to use

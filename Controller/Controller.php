@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Controller;
+namespace Gus\TableBundle\Controller;
 
-use JGM\TableBundle\Table\Table;
-use JGM\TableBundle\Table\TableTypeBuilder;
-use JGM\TableBundle\Table\Type\AbstractTableType;
+use Gus\TableBundle\Table\Table;
+use Gus\TableBundle\Table\TableTypeBuilder;
+use Gus\TableBundle\Table\Type\AbstractTableType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as SymfonyController;
 
 /**
@@ -33,7 +33,7 @@ class Controller extends SymfonyController
 	 */
 	protected function createTable(AbstractTableType $tableType, array $options = array())
 	{
-		return $this->get('jgm.table_factory')->createTable($tableType, $options);
+		return $this->get('gus.table_factory')->createTable($tableType, $options);
 	}
 	
 	/**
@@ -49,6 +49,6 @@ class Controller extends SymfonyController
 	 */
 	protected function createTableTypeBuilder($name, array $options = array())
 	{
-		return $this->get('jgm.table_factory')->createTableTypeBuilder($name, $options);
+		return $this->get('gus.table_factory')->createTableTypeBuilder($name, $options);
 	}
 }

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter;
+namespace Gus\TableBundle\Table\Filter;
 
-use JGM\TableBundle\Table\TableException;
+use Gus\TableBundle\Table\TableException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -50,7 +50,7 @@ class DateFilter extends AbstractFilter
 			return 'date_text_widget';
 		}
 		
-		TableException::filterWidgetNotFound($this->container->get('jgm.table_context')->getCurrentTableName(), $this->widget);
+		TableException::filterWidgetNotFound($this->container->get('gus.table_context')->getCurrentTableName(), $this->widget);
 	}
 	
 	public function setValue(array $value)

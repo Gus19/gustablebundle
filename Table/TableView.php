@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table;
+namespace Gus\TableBundle\Table;
 
-use JGM\TableBundle\Table\Filter\FilterInterface;
-use JGM\TableBundle\Table\Filter\Model\Filter;
-use JGM\TableBundle\Table\OptionsResolver\TableOptions;
-use JGM\TableBundle\Table\Order\Model\Order;
-use JGM\TableBundle\Table\Pagination\Model\Pagination;
-use JGM\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
-use JGM\TableBundle\Table\Row\Row;
+use Gus\TableBundle\Table\Filter\FilterInterface;
+use Gus\TableBundle\Table\Filter\Model\Filter;
+use Gus\TableBundle\Table\OptionsResolver\TableOptions;
+use Gus\TableBundle\Table\Order\Model\Order;
+use Gus\TableBundle\Table\Pagination\Model\Pagination;
+use Gus\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
+use Gus\TableBundle\Table\Row\Row;
 
 /**
  * TablieView

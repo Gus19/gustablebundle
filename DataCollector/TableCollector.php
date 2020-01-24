@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\DataCollector;
+namespace Gus\TableBundle\DataCollector;
 
 use Exception;
-use JGM\TableBundle\DependencyInjection\Service\TableContext;
-use JGM\TableBundle\DependencyInjection\Service\TableHintService;
-use JGM\TableBundle\DependencyInjection\Service\TableStopwatchService;
-use JGM\TableBundle\Table\TableException;
-use JGM\TableBundle\Version;
+use Gus\TableBundle\DependencyInjection\Service\TableContext;
+use Gus\TableBundle\DependencyInjection\Service\TableHintService;
+use Gus\TableBundle\DependencyInjection\Service\TableStopwatchService;
+use Gus\TableBundle\Table\TableException;
+use Gus\TableBundle\Version;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
@@ -109,7 +109,7 @@ class TableCollector extends DataCollector
 	
 	public function getName()
 	{
-		return 'jgm.table_collector';
+		return 'gus.table_collector';
 	}
 	
 	protected function formatAttributes(array $attributes)
@@ -122,4 +122,8 @@ class TableCollector extends DataCollector
 		
 		return $formatedAttributes;
 	}
+
+	public function reset() {
+    // TODO: Implement reset() method.
+  }
 }

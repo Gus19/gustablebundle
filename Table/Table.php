@@ -9,33 +9,33 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table;
+namespace Gus\TableBundle\Table;
 
 use Doctrine\DBAL\Schema\View;
 use Doctrine\ORM\EntityManager;
-use JGM\TableBundle\DependencyInjection\Service\TableContext;
-use JGM\TableBundle\DependencyInjection\Service\TableHintService;
-use JGM\TableBundle\DependencyInjection\Service\TableStopwatchService;
-use JGM\TableBundle\Table\Column\ColumnInterface;
-use JGM\TableBundle\Table\DataSource\DataSourceInterface;
-use JGM\TableBundle\Table\Filter\FilterBuilder;
-use JGM\TableBundle\Table\Filter\FilterInterface;
-use JGM\TableBundle\Table\Filter\OptionsResolver\FilterOptionsResolver;
-use JGM\TableBundle\Table\Filter\Type\FilterTypeInterface;
-use JGM\TableBundle\Table\OptionsResolver\TableOptions;
-use JGM\TableBundle\Table\OptionsResolver\TableOptionsResolver;
-use JGM\TableBundle\Table\Order\Model\Order;
-use JGM\TableBundle\Table\Order\OptionsResolver\OrderOptions;
-use JGM\TableBundle\Table\Order\OptionsResolver\OrderOptionsResolver;
-use JGM\TableBundle\Table\Order\Type\OrderTypeInterface;
-use JGM\TableBundle\Table\Pagination\Model\Pagination;
-use JGM\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
-use JGM\TableBundle\Table\Pagination\OptionsResolver\PaginationOptionsResolver;
-use JGM\TableBundle\Table\Pagination\Type\PaginationTypeInterface;
-use JGM\TableBundle\Table\Row\Row;
-use JGM\TableBundle\Table\Selection\SelectionButtonBuilder;
-use JGM\TableBundle\Table\Selection\Type\SelectionTypeInterface;
-use JGM\TableBundle\Table\Type\AbstractTableType;
+use Gus\TableBundle\DependencyInjection\Service\TableContext;
+use Gus\TableBundle\DependencyInjection\Service\TableHintService;
+use Gus\TableBundle\DependencyInjection\Service\TableStopwatchService;
+use Gus\TableBundle\Table\Column\ColumnInterface;
+use Gus\TableBundle\Table\DataSource\DataSourceInterface;
+use Gus\TableBundle\Table\Filter\FilterBuilder;
+use Gus\TableBundle\Table\Filter\FilterInterface;
+use Gus\TableBundle\Table\Filter\OptionsResolver\FilterOptionsResolver;
+use Gus\TableBundle\Table\Filter\Type\FilterTypeInterface;
+use Gus\TableBundle\Table\OptionsResolver\TableOptions;
+use Gus\TableBundle\Table\OptionsResolver\TableOptionsResolver;
+use Gus\TableBundle\Table\Order\Model\Order;
+use Gus\TableBundle\Table\Order\OptionsResolver\OrderOptions;
+use Gus\TableBundle\Table\Order\OptionsResolver\OrderOptionsResolver;
+use Gus\TableBundle\Table\Order\Type\OrderTypeInterface;
+use Gus\TableBundle\Table\Pagination\Model\Pagination;
+use Gus\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
+use Gus\TableBundle\Table\Pagination\OptionsResolver\PaginationOptionsResolver;
+use Gus\TableBundle\Table\Pagination\Type\PaginationTypeInterface;
+use Gus\TableBundle\Table\Row\Row;
+use Gus\TableBundle\Table\Selection\SelectionButtonBuilder;
+use Gus\TableBundle\Table\Selection\Type\SelectionTypeInterface;
+use Gus\TableBundle\Table\Type\AbstractTableType;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -220,7 +220,7 @@ class Table
 		$this->usePrefix = $usePrefix;
 		$this->stopwatchService = $stopwatchService;
 		$this->hintService = $hintService;
-		$this->tableContext = $container->get('jgm.table_context');
+		$this->tableContext = $container->get('gus.table_context');
 		
 		// Set up rows, filters and optionsResolver
 		// for the table type.

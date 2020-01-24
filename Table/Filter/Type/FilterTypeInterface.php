@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter\Type;
+namespace Gus\TableBundle\Table\Filter\Type;
 
-use JGM\TableBundle\Table\Filter\FilterBuilder;
+use Gus\TableBundle\Table\Filter\FilterBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

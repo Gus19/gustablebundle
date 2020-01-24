@@ -2,7 +2,7 @@
 
 {% block toolbar %}
     {% set icon %}
-        <span class="icon">{{ include('JGMTableBundle:DataCollector:icon.svg.twig') }}</span>
+        <span class="icon">{{ include('@GusTable/DataCollector/icon.svg.twig') }}</span>
 		<span class="sf-toolbar-value sf-toolbar-status{% if not collector.exception is null %} sf-toolbar-status-red{% elseif collector.duration > 1000 or collector.hints|length > 0 %} sf-toolbar-status-yellow{% endif %}">{{ collector.count }}</span>
 		<span class="sf-toolbar-value">in {{ collector.duration }} ms</span>
     {% endset %}
@@ -57,7 +57,7 @@
 {% block menu %}
     <span class="label">
         <span class="icon">
-			{{ include('JGMTableBundle:DataCollector:icon.svg.twig') }}
+			{{ include('@GusTable/DataCollector/icon.svg.twig') }}
 		</span>
         <strong>Tables</strong>
 		<span class="count"><span>{{ collector.count }}</span></span>
@@ -65,7 +65,7 @@
 {% endblock %}
 
 {% block panel %}
-    {{ include('JGMTableBundle:DataCollector:panel_times.html.twig') }}
-	{{ include('JGMTableBundle:DataCollector:panel_hints.html.twig') }}
-	{{ include('JGMTableBundle:DataCollector:panel_exception.html.twig') }}
+    {{ include('@GusTable/DataCollector/panel_times.html.twig') }}
+	{{ include('@GusTable/DataCollector/panel_hints.html.twig') }}
+	{{ include('@GusTable/DataCollector/panel_exception.html.twig') }}
 {% endblock %}

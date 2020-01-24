@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\AccessValidation;
+namespace Gus\TableBundle\Table\AccessValidation;
 
 /**
  * Factory for creating the right validator,

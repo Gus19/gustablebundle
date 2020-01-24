@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\DependencyInjection\Service;
+namespace Gus\TableBundle\DependencyInjection\Service;
 
 use Doctrine\ORM\EntityManager;
-use JGM\TableBundle\DependencyInjection\Service\TableStopwatchService;
-use JGM\TableBundle\Table\Table;
-use JGM\TableBundle\Table\TableTypeBuilder;
-use JGM\TableBundle\Table\Type\AbstractTableType;
+use Gus\TableBundle\DependencyInjection\Service\TableStopwatchService;
+use Gus\TableBundle\Table\Table;
+use Gus\TableBundle\Table\TableTypeBuilder;
+use Gus\TableBundle\Table\Type\AbstractTableType;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;

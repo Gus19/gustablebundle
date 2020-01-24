@@ -1,17 +1,17 @@
 <?php
 
-namespace JGM\TableBundle\Table;
+namespace Gus\TableBundle\Table;
 
 use Doctrine\ORM\QueryBuilder;
-use JGM\TableBundle\Table\DataSource\ArrayDataSource;
-use JGM\TableBundle\Table\DataSource\DataSourceInterface;
-use JGM\TableBundle\Table\DataSource\EntityDataSource;
-use JGM\TableBundle\Table\DataSource\QueryBuilderDataSource;
-use JGM\TableBundle\Table\Filter\FilterBuilder;
-use JGM\TableBundle\Table\Filter\Type\FilterTypeInterface;
-use JGM\TableBundle\Table\Order\Type\OrderTypeInterface;
-use JGM\TableBundle\Table\Pagination\Type\PaginationTypeInterface;
-use JGM\TableBundle\Table\Type\AbstractTableType;
+use Gus\TableBundle\Table\DataSource\ArrayDataSource;
+use Gus\TableBundle\Table\DataSource\DataSourceInterface;
+use Gus\TableBundle\Table\DataSource\EntityDataSource;
+use Gus\TableBundle\Table\DataSource\QueryBuilderDataSource;
+use Gus\TableBundle\Table\Filter\FilterBuilder;
+use Gus\TableBundle\Table\Filter\Type\FilterTypeInterface;
+use Gus\TableBundle\Table\Order\Type\OrderTypeInterface;
+use Gus\TableBundle\Table\Pagination\Type\PaginationTypeInterface;
+use Gus\TableBundle\Table\Type\AbstractTableType;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

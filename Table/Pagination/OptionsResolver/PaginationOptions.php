@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Pagination\OptionsResolver;
+namespace Gus\TableBundle\Table\Pagination\OptionsResolver;
 
 /**
  * Holder class for pagination options.

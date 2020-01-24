@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Twig;
+namespace Gus\TableBundle\Twig;
 
-use JGM\TableBundle\DependencyInjection\Service\TableStopwatchService;
-use JGM\TableBundle\Table\TableView;
-use JGM\TableBundle\Table\Utils\UrlHelper;
-use Twig_Environment;
-use Twig_SimpleFunction;
+use Gus\TableBundle\DependencyInjection\Service\TableStopwatchService;
+use Gus\TableBundle\Table\TableView;
+use Gus\TableBundle\Table\Utils\UrlHelper;
+use \Twig\Environment as Twig_Environment;
+use \Twig\TwigFunction as Twig_SimpleFunction;
 
 /**
  * Twig extension for render the table filter views.
@@ -44,7 +44,7 @@ class SelectionExtension extends AbstractTwigExtension
 	}
 	public function getSelectionButtons(Twig_Environment $environment, TableView $tableView)
 	{
-		$template = $this->loadTemplate($environment, 'JGMTableBundle:Blocks:selection.html.twig');
+		$template = $this->loadTemplate($environment, '@GusTable/Blocks/selection.html.twig');
 		
 		return $template->renderBlock('selection_buttons', array(
 			'tableView' => $tableView,
@@ -54,7 +54,7 @@ class SelectionExtension extends AbstractTwigExtension
 	
 	public function getSelectionButton(Twig_Environment $environment, TableView $tableView, $buttonName)
 	{
-		$template = $this->loadTemplate($environment, 'JGMTableBundle:Blocks:selection.html.twig');
+		$template = $this->loadTemplate($environment, '@GusTable/Blocks/selection.html.twig');
 		
 		$buttons =  $tableView->getSelectionButtons();
 		return $template->renderBlock('selection_button', array(

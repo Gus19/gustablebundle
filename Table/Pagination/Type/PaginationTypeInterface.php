@@ -1,6 +1,6 @@
 <?php
 
-namespace JGM\TableBundle\Table\Pagination\Type;
+namespace Gus\TableBundle\Table\Pagination\Type;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

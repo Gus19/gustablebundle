@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter;
+namespace Gus\TableBundle\Table\Filter;
 
-use JGM\TableBundle\Table\DataSource\DataSourceInterface;
+use Gus\TableBundle\Table\DataSource\DataSourceInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table;
+namespace Gus\TableBundle\Table;
 
 /**
  * Exception which will be used for all exceptions

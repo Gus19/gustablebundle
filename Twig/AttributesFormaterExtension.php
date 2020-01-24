@@ -9,10 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Twig;
+namespace Gus\TableBundle\Twig;
 
-use Twig_Extension;
-use Twig_SimpleFilter;
+use Twig\Extension\AbstractExtension as Twig_Extension;
+use Twig\TwigFilter as Twig_SimpleFilter;
+use \Twig\Environment as Twig_Environment;
 
 /**
  * Twig extension for formatting attributes

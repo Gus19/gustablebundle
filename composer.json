@@ -1,35 +1,25 @@
 {
-    "name" : "gus/tablebundle",
-    "description" : "Bundle for creating data tables for symfony application. Based on Jan Mühlig, jgm/tablebundle",
-    "type" : "symfony-bundle",
-    "authors" : [{
-        "name" : "Gus19",
-        "email" : "github@julienalbinet.fr"
-    }],
-    "keywords" : [
-        "symfony",
-	"table",
-	"data table",
-	"simple tables",
-	"bundle",
-	"pagination",
-	"filter",
-	"search"
-    ],
-    "license" : [ "MIT" ],
-    "require" : {
-      "php": ">=5.3.9",
-      "symfony/framework-bundle": "4.4.*",
-      "symfony/yaml": "4.4.*"
-      "symfony/security-bundle": "4.4.*",
-      "symfony/http-client": "4.4.*",
-      "symfony/twig-pack": "*",
-      "symfony/orm-pack": "*"
-    },
-    "autoload" : {
-        "psr-0" : {
-            "Gus\\TableBundle" : ""
+    "name": "gus/tablebundle",
+    "type": "symfony-bundle",
+    "description": "Bundle for creating data tables for symfony application. Fork on Jan Mühlig, jgm/tablebundle",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Gus19",
+            "email": "github@julienalbinet.fr"
         }
+    ],
+    "require": {
+        "php":                      ">=5.6",
+        "symfony/framework-bundle": "~4.0",
+        "symfony/http-kernel":      "~4.0",
+        "symfony/validator":        "~4.0",
+        "symfony/twig-pack":        "*"
     },
-    "target-dir" : "Gus/TableBundle"
+    "autoload": {
+        "psr-4" : {
+            "Gus\\TableBundle\\" : ""
+        }
+    }
 }

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Utils;
+namespace Gus\TableBundle\Table\Utils;
 
-use JGM\TableBundle\Table\TableException;
+use Gus\TableBundle\Table\TableException;
 
 /**
  * Helper for entity reflection.

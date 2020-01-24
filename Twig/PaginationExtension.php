@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Twig;
+namespace Gus\TableBundle\Twig;
 
-use JGM\TableBundle\DependencyInjection\Service\TableStopwatchService;
-use JGM\TableBundle\Table\OptionsResolver\TableOptions;
-use JGM\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
-use JGM\TableBundle\Table\Pagination\Strategy\StrategyFactory;
-use JGM\TableBundle\Table\Pagination\Strategy\StrategyInterface;
-use JGM\TableBundle\Table\TableView;
-use JGM\TableBundle\Table\Utils\UrlHelper;
-use Twig_Environment;
-use Twig_SimpleFunction;
+use Gus\TableBundle\DependencyInjection\Service\TableStopwatchService;
+use Gus\TableBundle\Table\OptionsResolver\TableOptions;
+use Gus\TableBundle\Table\Pagination\OptionsResolver\PaginationOptions;
+use Gus\TableBundle\Table\Pagination\Strategy\StrategyFactory;
+use Gus\TableBundle\Table\Pagination\Strategy\StrategyInterface;
+use Gus\TableBundle\Table\TableView;
+use Gus\TableBundle\Table\Utils\UrlHelper;
+use \Twig\Environment as Twig_Environment;
+use \Twig\TwigFunction as Twig_SimpleFunction;
 
 /**
  * Twig extension for render the table pagination

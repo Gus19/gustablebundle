@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Selection\Column;
+namespace Gus\TableBundle\Table\Selection\Column;
 
-use JGM\TableBundle\Table\Column\AbstractColumn;
-use JGM\TableBundle\Table\Row\Row;
+use Gus\TableBundle\Table\Column\AbstractColumn;
+use Gus\TableBundle\Table\Row\Row;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

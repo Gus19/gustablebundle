@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\PropelQueryBuilder;
+namespace Gus\TableBundle\Table\PropelQueryBuilder;
 
 /**
  * @author	Daniel Purrucker <daniel.purrucker@nordakademie.de>

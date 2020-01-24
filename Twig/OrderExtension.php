@@ -9,12 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Twig;
+namespace Gus\TableBundle\Twig;
 
-use JGM\TableBundle\DependencyInjection\Service\TableStopwatchService;
-use JGM\TableBundle\Table\Order\Model\Order;
-use JGM\TableBundle\Table\Utils\UrlHelper;
-use Twig_SimpleFunction;
+use Gus\TableBundle\DependencyInjection\Service\TableStopwatchService;
+use Gus\TableBundle\Table\Order\Model\Order;
+use Gus\TableBundle\Table\Utils\UrlHelper;
+use \Twig\TwigFunction as Twig_SimpleFunction;
+use \Twig\Environment as Twig_Environment;
 
 /**
  * Twig extension implementing helper methods

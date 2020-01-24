@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\DataSource;
+namespace Gus\TableBundle\Table\DataSource;
 
 use DateTime;
-use JGM\TableBundle\Table\Filter\EntityFilter;
-use JGM\TableBundle\Table\Filter\FilterInterface;
-use JGM\TableBundle\Table\Filter\FilterOperator;
-use JGM\TableBundle\Table\Order\Model\Order;
-use JGM\TableBundle\Table\Pagination\Model\Pagination;
-use JGM\TableBundle\Table\Utils\ReflectionHelper;
+use Gus\TableBundle\Table\Filter\EntityFilter;
+use Gus\TableBundle\Table\Filter\FilterInterface;
+use Gus\TableBundle\Table\Filter\FilterOperator;
+use Gus\TableBundle\Table\Order\Model\Order;
+use Gus\TableBundle\Table\Pagination\Model\Pagination;
+use Gus\TableBundle\Table\Utils\ReflectionHelper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -82,8 +82,8 @@ class ArrayDataSource implements DataSourceInterface
 	
 	public function getData(ContainerInterface $container, array $columns, array $filters = null, Pagination $pagination = null, Order $sortable = null)
 	{
-		$container->get('jgm.table_hint')->addHint(
-			$container->get('jgm.table_context')->getCurrentTableName(),
+		$container->get('gus.table_hint')->addHint(
+			$container->get('gus.table_context')->getCurrentTableName(),
 			'The used ArrayDataSource may be slower than other data sources, espaccially on filtering.'
 		);
 		

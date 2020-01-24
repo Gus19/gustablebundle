@@ -9,16 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Order\Model;
+namespace Gus\TableBundle\Table\Order\Model;
 
-use JGM\TableBundle\Table\Order\OptionsResolver\OrderOptions;
+use Gus\TableBundle\Table\Order\OptionsResolver\OrderOptions;
 
 /**
  * Container for the options of the order component.
  *
  * @author		Julien Albinet <julien.albinet@gmail.com>
  * @since		1.0
- * @deprecated	since 1.3, will be removed at 1.5
  */
 class Order
 {

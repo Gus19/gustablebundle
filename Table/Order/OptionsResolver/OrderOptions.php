@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Order\OptionsResolver;
+namespace Gus\TableBundle\Table\Order\OptionsResolver;
 
 /**
  * Holder class for order options.

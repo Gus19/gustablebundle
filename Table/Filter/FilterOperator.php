@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter;
+namespace Gus\TableBundle\Table\Filter;
 
-use JGM\TableBundle\Table\TableException;
+use Gus\TableBundle\Table\TableException;
 
 /**
  * Available filter operators.

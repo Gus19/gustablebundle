@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Pagination\Strategy;
+namespace Gus\TableBundle\Table\Pagination\Strategy;
 
 /**
  * Strategy for pages -drawed at pagination- if number of maximal pages

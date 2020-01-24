@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace JGM\TableBundle\Table\Filter\ValueManipulator;
+namespace Gus\TableBundle\Table\Filter\ValueManipulator;
 
 /**
  * Value Manipulator Interface, which can manipulate a filter given value.
