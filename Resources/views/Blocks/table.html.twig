@@ -70,7 +70,7 @@
         </tr>
       {% else %}
         <tr>
-          <td colspan="{{ columns|length }}">{{ emptyValue|trans }}</td>
+          <td colspan="{{ columns|length }}">{{ emptyValue|trans([], 'gus_table') }}</td>
         </tr>
       {% endfor %}
     </tbody>

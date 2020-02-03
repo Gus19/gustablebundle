@@ -2,7 +2,6 @@
   {% apply spaceless %}
     {{ filter_begin(view) }}
     {{ filter_rows(view) }}
-    <br />
     {{ filter_submit_button(view) }}
     {{ filter_reset_link(view) }}
     {{ filter_end(view) }}
@@ -35,7 +34,7 @@
 
 {% block filter_row %}
   {% apply spaceless %}
-  {{ filter_label(filter) }}: {{ filter_widget(filter) }}
+  {{ filter_label(filter) }}{{ filter_widget(filter) }}
   {% endapply %}
 {% endblock %}
 
@@ -43,7 +42,6 @@
   {% apply spaceless %}
     {% for filter in filters %}
       {{ filter_row(filter) }}
-      {% if not loop.last %}<br />{% endif %}
     {% endfor %}
   {% endapply %}
 {% endblock %}
