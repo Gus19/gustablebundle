@@ -1,8 +1,8 @@
 table:
   result: >-
     {count, plural,
-      =0    {{count} Résultat}
-      one   {{count} Résultat}
-      other {{count} Résultats}
+      =0    {# Résultat}
+      one   {# Résultat}
+      other {# Résultats}
     }
   noresult: Pas de résultat
