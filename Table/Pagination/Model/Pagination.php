@@ -65,7 +65,8 @@ class Pagination
 				'default' => $this->options[PaginationOptions::LI_CLASS],
 				'active' => $this->options[PaginationOptions::LI_CLASS_ACTIVE],
 				'disabled' => $this->options[PaginationOptions::LI_CLASS_DISABLED]
-			)
+			),
+      'ul' => $this->options[PaginationOptions::A_CLASS],
 		);
 	}
 	

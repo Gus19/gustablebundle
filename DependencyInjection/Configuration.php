@@ -32,7 +32,7 @@ class Configuration implements ConfigurationInterface {
     //throw new \Exception("Ici !");
     //$treeBuilder = new TreeBuilder();
     //$rootNode = $treeBuilder->root('gus_table');
-    $treeBuilder = new TreeBuilder('gus_test');
+    $treeBuilder = new TreeBuilder('gus_table');
 
     $treeBuilder->getRootNode()
 			->children()
@@ -126,14 +126,17 @@ class Configuration implements ConfigurationInterface {
 							->defaultValue('pagination')
 						->end()
 						->scalarNode(PaginationOptions::LI_CLASS)
-							->defaultValue(null)
+							->defaultValue('page-item')
 						->end()
 						->scalarNode(PaginationOptions::LI_CLASS_ACTIVE)
-							->defaultValue('active')
+							->defaultValue('page-item active')
 						->end()
 						->scalarNode(PaginationOptions::LI_CLASS_DISABLED)
-							->defaultValue('disabled')
+							->defaultValue('page-item disabled')
 						->end()
+            ->scalarNode(PaginationOptions::A_CLASS)
+              ->defaultValue('page-link')
+            ->end()
 						->scalarNode(PaginationOptions::PREV_LABEL)
 							->defaultValue('&laquo')
 						->end()

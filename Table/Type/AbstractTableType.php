@@ -97,7 +97,7 @@ abstract class AbstractTableType implements TableTypeInterface
 	public function configureOptions(OptionsResolver $resolver)
 	{
     $resolver->setDefaults(array(
-      'attr' => array('class' => 'table table-bordered table-striped table-condensed')
+      'attr' => array('class' => 'table table-bordered table-striped table-condensed table-sm')
     ));
 	}
 }

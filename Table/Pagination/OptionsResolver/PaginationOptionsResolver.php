@@ -37,6 +37,7 @@ class PaginationOptionsResolver extends OptionsResolver
 			PaginationOptions::LI_CLASS => $globalDefaults[PaginationOptions::LI_CLASS],
 			PaginationOptions::LI_CLASS_ACTIVE => $globalDefaults[PaginationOptions::LI_CLASS_ACTIVE],
 			PaginationOptions::LI_CLASS_DISABLED => $globalDefaults[PaginationOptions::LI_CLASS_DISABLED],
+      PaginationOptions::A_CLASS => $globalDefaults[PaginationOptions::A_CLASS],
 			PaginationOptions::PREV_LABEL => $globalDefaults[PaginationOptions::PREV_LABEL],
 			PaginationOptions::NEXT_LABEL => $globalDefaults[PaginationOptions::NEXT_LABEL],
 			PaginationOptions::MAX_PAGES => $globalDefaults[PaginationOptions::MAX_PAGES],
@@ -57,6 +58,7 @@ class PaginationOptionsResolver extends OptionsResolver
 		$this->setAllowedTypes(PaginationOptions::LI_CLASS, array('string', 'null'));
 		$this->setAllowedTypes(PaginationOptions::LI_CLASS_ACTIVE, array('string', 'null'));
 		$this->setAllowedTypes(PaginationOptions::LI_CLASS_DISABLED, array('string', 'null'));
+    $this->setAllowedTypes(PaginationOptions::A_CLASS, array('string', 'null'));
 		$this->setAllowedTypes(PaginationOptions::PREV_LABEL, 'string');
 		$this->setAllowedTypes(PaginationOptions::NEXT_LABEL, 'string');
 		$this->setAllowedTypes(PaginationOptions::MAX_PAGES, array('integer', 'null'));

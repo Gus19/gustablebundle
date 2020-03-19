@@ -25,6 +25,7 @@ class PaginationOptions
 	const SHOW_EMPTY				= 'show_empty';
 	const UL_CLASS					= 'ul_class';
 	const LI_CLASS					= 'li_class';
+  const A_CLASS					= 'a_class';
 	const LI_CLASS_ACTIVE			= 'li_class_active';
 	const LI_CLASS_DISABLED			= 'li_class_disabled';
 	const PREV_LABEL				= 'prev_label';

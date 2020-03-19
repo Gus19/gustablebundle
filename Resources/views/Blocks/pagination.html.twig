@@ -4,11 +4,11 @@
       {# Left arrow #}
       {% if currentPage == 0 %}
         <li{{ {'class': classes['li']['disabled']|join(' ')}|format_attributes }}>
-          <a>{{ prevLabel|raw }}</a>
+          <a{{ {'class': classes['a']|join(' ')}|format_attributes }}>{{ prevLabel|raw }}</a>
         </li>
       {% else %}
         <li{{ {'class': classes['li']['default']|join(' ')}|format_attributes }}>
-          <a href="{{ page_url(parameterName, currentPage) }}">{{ prevLabel|raw }}</a>
+          <a{{ {'class': classes['a']|join(' ')}|format_attributes }} href="{{ page_url(parameterName, currentPage) }}">{{ prevLabel|raw }}</a>
         </li>
       {% endif %}
 
@@ -21,7 +21,7 @@
             {% set attributes = {'class': classes['li']['default']|join(' ')} %}
           {% endif %}
           <li{{ attributes|format_attributes }}>
-            <a href="{{ page_url(parameterName, page+1) }}">{{ page+1 }}</a>
+            <a{{ {'class': classes['a']|join(' ')}|format_attributes }} href="{{ page_url(parameterName, page+1) }}">{{ page+1 }}</a>
           </li>
           {% if index+1 < pages|length and pages[index+1]-page > 1 %}
             <li{{ {'class': classes['li']['disabled']|join(' ')}|format_attributes }}><a>...</a></li>
@@ -30,10 +30,10 @@
       {% else %}
         {% if currentPage-4 > 0 %}          
           <li{{ {'class': classes['li']['default']|join(' ')}|format_attributes }}>
-            <a href="{{ page_url(parameterName, 1) }}">1</a>
+            <a{{ {'class': classes['a']|join(' ')}|format_attributes }} href="{{ page_url(parameterName, 1) }}">1</a>
           </li>
           {% if currentPage-4!=1 %}
-            <li{{ {'class': classes['li']['disabled']|join(' ')}|format_attributes }}><a>...</a></li>
+            <li{{ {'class': classes['li']['disabled']|join(' ')}|format_attributes }}><a{{ {'class': classes['a']|join(' ')}|format_attributes }}>...</a></li>
           {% endif %}
         {% endif %}
         
@@ -45,17 +45,17 @@
               {% set attributes = {'class': classes['li']['default']|join(' ')} %}
             {% endif %}
             <li{{ attributes|format_attributes }}>
-              <a href="{{ page_url(parameterName, i+1) }}">{{ i+1 }}</a>
+              <a{{ {'class': classes['a']|join(' ')}|format_attributes }} href="{{ page_url(parameterName, i+1) }}">{{ i+1 }}</a>
             </li>
           {% endif %}
         {% endfor %}
         
         {% if currentPage+5 < pages|length %}
           {% if currentPage+6 != pages|length %}
-            <li{{ {'class': classes['li']['disabled']|join(' ')}|format_attributes }}><a>...</a></li>
+            <li{{ {'class': classes['li']['disabled']|join(' ')}|format_attributes }}><a{{ {'class': classes['a']|join(' ')}|format_attributes }}>...</a></li>
           {% endif %}
           <li{{ {'class': classes['li']['default']|join(' ')}|format_attributes }}>
-            <a href="{{ page_url(parameterName, pages|length) }}">{{ pages|length }}</a>
+            <a{{ {'class': classes['a']|join(' ')}|format_attributes }} href="{{ page_url(parameterName, pages|length) }}">{{ pages|length }}</a>
           </li>
         {% endif %}
       {% endif %}
@@ -63,11 +63,11 @@
       {# Right arrow #}
       {% if currentPage == totalPages-1 %}
         <li{{ {'class': classes['li']['disabled']|join(' ')}|format_attributes }}>
-          <a>{{ nextLabel|raw }}</a>
+          <a{{ {'class': classes['a']|join(' ')}|format_attributes }}>{{ nextLabel|raw }}</a>
         </li>
       {% else %}
         <li{{ {'class': classes['li']['default']|join(' ')}|format_attributes }}>
-          <a href="{{ page_url(parameterName, currentPage+2) }}">{{ nextLabel|raw }}</a>
+          <a{{ {'class': classes['a']|join(' ')}|format_attributes }} href="{{ page_url(parameterName, currentPage+2) }}">{{ nextLabel|raw }}</a>
         </li>
       {% endif %}
     </ul>

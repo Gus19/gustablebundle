@@ -116,7 +116,8 @@ class PaginationExtension extends AbstractTwigExtension
 					'default' => $tableView->getPaginationOption(PaginationOptions::LI_CLASS),
 					'active' => $tableView->getPaginationOption(PaginationOptions::LI_CLASS_ACTIVE),
 					'disabled' => $tableView->getPaginationOption(PaginationOptions::LI_CLASS_DISABLED)
-				)
+				),
+        'a' => $tableView->getPaginationOption(PaginationOptions::A_CLASS)
 			),
 			'parameterName' => $tableView->getPaginationOption(PaginationOptions::PARAM),
 			'pages' => $strategy->getPages(
