@@ -32,7 +32,7 @@ class DateFilter extends AbstractFilter
 		parent::setDefaultFilterOptions($optionsResolver);
 		
 		$optionsResolver->setDefaults(array(
-			'format' => 'd.m.Y',
+			'format' => 'Y-m-d',
 			'widget' => 'text',
 			'type' => 'text'
 			//'years' => range( date('Y', strtotime('-5 years')), date('Y', strtotime('+5 years')) ),

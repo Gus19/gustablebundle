@@ -175,7 +175,7 @@
     {% set format = filter.format %}
   {% endif %}
   {% set filterValue = filter.getValue(constant('Gus\\TableBundle\\Table\\Filter\\FilterInterface::FOR_RENDERING')) %}
-  <input type="date" id="{{ filter.name }}}" name="{{ filter.name }}"{% if filterValue is not null %} value="{{ filterValue|date(format) }}"{% endif %}{{ filter.attributes|format_attributes }} />
+  <input type="date" id="{{ filter.name }}" name="{{ filter.name }}"{% if filterValue is not null %} value="{{ filterValue|date(format) }}"{% endif %}{{ filter.attributes|format_attributes }} />
   {% endapply %}
 {% endblock %}
 

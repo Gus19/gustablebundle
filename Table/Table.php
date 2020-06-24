@@ -613,6 +613,8 @@ class Table
 		$optionsResolver = new TableOptionsResolver($this->container);
 		$this->tableType->configureOptions($optionsResolver);
 		$options['table'] = $optionsResolver->resolve($this->options['table']);
+
+//		dump($options['table']); die();
 		
 		// Resolve options of pagination.
 		if($this->tableType instanceof PaginationTypeInterface && $options['table'][TableOptions::USE_PAGINATION])
