@@ -46,7 +46,11 @@
     <thead>
       <tr>
         {% for column in columns %}
-          <th class="th-col-{{ loop.index}}" {{ column.headAttributes|format_attributes }}>{{ column.label|trans }}</th>
+          <th class="th-col-{{ loop.index}}" {{ column.headAttributes|format_attributes }}>
+            {% if column.label|length > 0 %}
+              {{ column.label|trans }}
+            {% endif %}
+          </th>
         {% endfor %}
       </tr>
     </thead>
@@ -62,10 +66,12 @@
             <td class="td-col-{{ loop.index}}" {{ column.attributes|format_attributes }}>
               {% if column.view is defined %}
                 {{ include(column.view, { 'row': row, 'entity': row.entity }) }}
-              {% elseif column.trans %}
-                {{ column.content(row)|raw|trans }}
-              {% else %}
-                {{ column.content(row)|raw }}
+              {% elseif column.content(row)|length > 0 %}
+                {% if column.trans %}
+                  {{ column.content(row)|raw|trans }}
+                {% else %}
+                  {{ column.content(row)|raw }}
+                {% endif %}
               {% endif %}
             </td>
           {% endfor %}
