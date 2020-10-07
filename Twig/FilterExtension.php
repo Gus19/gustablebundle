@@ -205,11 +205,19 @@ class FilterExtension extends AbstractTwigExtension
 		);
 		
 		$content = $template->renderBlock('filter_submit_button', array(
+		  'form' => $tableView,
 			'needsFormEnviroment' => $this->getFilterNeedsFormEnviroment($tableView),
 			'submitLabel' => $tableView->getFilterOption(FilterOptions::SUBMIT_LABEL),
 			'attributes' => $tableView->getFilterOption(FilterOptions::SUBMIT_ATTRIBUTES)
 		));
-		
+
+		dump(array(
+      'form' => $tableView,
+      'needsFormEnviroment' => $this->getFilterNeedsFormEnviroment($tableView),
+      'submitLabel' => $tableView->getFilterOption(FilterOptions::SUBMIT_LABEL),
+      'attributes' => $tableView->getFilterOption(FilterOptions::SUBMIT_ATTRIBUTES)
+    ));
+
 		return $content;
 	}
 	

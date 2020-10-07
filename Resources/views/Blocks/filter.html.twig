@@ -48,7 +48,7 @@
 
 {% block filter_submit_button %}
   {% apply spaceless %}
-  <input type="hidden" name="page" value="1" />
+  <input type="hidden" name="{{ form.paginationOption('param') }}" value="1" />
   {% if needsFormEnviroment %}<input type="submit" value="{{ submitLabel|trans }}"{{ attributes|format_attributes }} />{% endif %}
   {% endapply %}
 {% endblock %}
