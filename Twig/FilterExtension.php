@@ -211,13 +211,6 @@ class FilterExtension extends AbstractTwigExtension
 			'attributes' => $tableView->getFilterOption(FilterOptions::SUBMIT_ATTRIBUTES)
 		));
 
-		dump(array(
-      'form' => $tableView,
-      'needsFormEnviroment' => $this->getFilterNeedsFormEnviroment($tableView),
-      'submitLabel' => $tableView->getFilterOption(FilterOptions::SUBMIT_LABEL),
-      'attributes' => $tableView->getFilterOption(FilterOptions::SUBMIT_ATTRIBUTES)
-    ));
-
 		return $content;
 	}
 	
