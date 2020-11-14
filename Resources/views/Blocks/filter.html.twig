@@ -79,7 +79,7 @@
         {% endif %}
         {% set itemValue = value %}
         {% set itemLabel = label %}
-        {{ block('list_widget_item') }} 
+        {{ block('list_widget_item') }}
       {% endfor %}
       {% if not isResetItemRendered %}
         {% set itemValue = null %}
@@ -169,13 +169,15 @@
 
 {% block date_text_widget %}
   {% apply spaceless %}
-  {% if filter.type == "date" and not format %}
-    {% set format = "Y-m-d" %}
-  {% else %}
-    {% set format = filter.format %}
-  {% endif %}
-  {% set filterValue = filter.getValue(constant('Gus\\TableBundle\\Table\\Filter\\FilterInterface::FOR_RENDERING')) %}
-  <input type="date" id="{{ filter.name }}" name="{{ filter.name }}"{% if filterValue is not null %} value="{{ filterValue|date(format) }}"{% endif %}{{ filter.attributes|format_attributes }} />
+    {% if filter.type == "date" %}
+      {% set format = 'Y-m-d' %}
+    {% elseif filter.type == "datetime" %}
+      {% set format = 'Y-m-d\\TH:i' %}
+    {% elseif filter.format %}
+      {% set format = filter.format %}
+    {% endif %}
+    {% set filterValue = filter.getValue(constant('Gus\\TableBundle\\Table\\Filter\\FilterInterface::FOR_RENDERING')) %}
+    <input type="{{ filter.type == "datetime" ? "datetime-local" : "date" }}" id="{{ filter.name }}" name="{{ filter.name }}"{% if filterValue is not null %} value="{{ filterValue|date(format|default('Y-m-d')) }}"{% endif %}{{ filter.attributes|format_attributes }} />
   {% endapply %}
 {% endblock %}
 
