@@ -32,7 +32,8 @@ class TwigColumn extends AbstractColumn implements ContainerAwareInterface
 	public function configureOptions(OptionsResolver $optionsResolver)
 	{
 		parent::configureOptions($optionsResolver);
-		
+
+    $optionsResolver->setDefault('extra', []);
 		$optionsResolver->setDefault('view', null);
 		$optionsResolver->setRequired('view');
 	}
@@ -49,11 +50,19 @@ class TwigColumn extends AbstractColumn implements ContainerAwareInterface
 			->get('templating')
 			->render(
 				$this->options['view'], 
-				array('row' => $row, 'entity' => $row->getEntity())
+				[
+          'row' => $row,
+          'entity' => $row->getEntity(),
+          'extra' => $this->options['extra']
+        ]
 			);
 	}
   
   public function getView() {
     return $this->options['view'];
+  }
+
+  public function getExtra() {
+    return $this->options['extra'];
   }
 }
