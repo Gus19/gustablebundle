@@ -28,10 +28,7 @@ class Configuration implements ConfigurationInterface {
   /**
   * {@inheritDoc}
   */
-  public function getConfigTreeBuilder()  {
-    //throw new \Exception("Ici !");
-    //$treeBuilder = new TreeBuilder();
-    //$rootNode = $treeBuilder->root('gus_table');
+  public function getConfigTreeBuilder(): TreeBuilder  {
     $treeBuilder = new TreeBuilder('gus_table');
 
     $treeBuilder->getRootNode()

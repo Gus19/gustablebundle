@@ -30,12 +30,12 @@ class SelectionExtension extends AbstractTwigExtension
 		parent::__construct($urlHelper, $stopwatchService);
 	}
 	
-	public function getName()
+	public function getName(): string
 	{
 		return 'selection';
 	}
 
-	public function getFunctions()
+	public function getFunctions(): array
 	{
 		return array(
 			new Twig_SimpleFunction ('selection_buttons', array($this, 'getSelectionButtons'), array('is_safe' => array('html'), 'needs_environment' => true)),

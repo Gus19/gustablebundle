@@ -12,9 +12,9 @@
     ],
     "require": {
         "php":                      ">=7.3",
-        "symfony/framework-bundle": "~4.0",
-        "symfony/http-kernel":      "~4.0",
-        "symfony/validator":        "~4.0",
+        "symfony/framework-bundle": "~5.4",
+        "symfony/http-kernel":      "~5.4",
+        "symfony/validator":        "~5.4",
         "symfony/twig-pack":        "*",
         "symfony/polyfill-intl-messageformatter": "^1.13"
     },

@@ -12,7 +12,7 @@
 namespace Gus\TableBundle\DependencyInjection\Listener;
 
 use Symfony\Component\HttpFoundation\Cookie;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 /**
  * Listener for listening response events.
@@ -22,9 +22,9 @@ use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
  */
 class ResponseListener
 {
-	public function onKernelResponse(FilterResponseEvent $event)
+	public function onKernelResponse(ResponseEvent $event)
 	{
-		if(!$event->isMasterRequest()) 
+		if(!$event->isMainRequest())
 		{
 			return;
 		}

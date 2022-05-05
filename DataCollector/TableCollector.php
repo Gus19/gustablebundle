@@ -19,7 +19,7 @@ use Gus\TableBundle\Table\TableException;
 use Gus\TableBundle\Version;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\DataCollector\DataCollector;
+use Symfony\Component\HttpKernel\DataCollector\DataCollectorInterface;
 
 /**
  * Collector for collecting information of the table bundle
@@ -29,7 +29,7 @@ use Symfony\Component\HttpKernel\DataCollector\DataCollector;
  * @author	Julien Albinet <julien.albinet@gmail.com>
  * @since	1.2
  */
-class TableCollector extends DataCollector
+class TableCollector implements DataCollectorInterface
 {
 	/**
 	 * @var TableContext
@@ -54,7 +54,7 @@ class TableCollector extends DataCollector
 		$this->data = array();
 	}
 	
-	public function collect(Request $request, Response $response, Exception $exception = null)
+	public function collect(Request $request, Response $response, \Throwable $exception = null)
 	{
 		$this->data['count'] = count($this->tableContext->getAllRegisteredTables());
 		$this->data['duration'] = $this->stopwatchService->getDuration();
@@ -107,7 +107,7 @@ class TableCollector extends DataCollector
 		return Version::getVersion();
 	}
 	
-	public function getName()
+	public function getName(): string
 	{
 		return 'gus.table_collector';
 	}

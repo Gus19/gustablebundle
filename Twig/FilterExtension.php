@@ -57,12 +57,12 @@ class FilterExtension extends AbstractTwigExtension
 		$this->filterNeedsFormEnvironment = array();
 	}
 	
-	public function getName()
+	public function getName(): string
 	{
 		return 'filter';
 	}
 
-	public function getFunctions()
+	public function getFunctions(): array
 	{
 		return array(
 			new Twig_SimpleFunction ('filter', array($this, 'getFilterContent'), array('is_safe' => array('html'), 'needs_environment' => true)),

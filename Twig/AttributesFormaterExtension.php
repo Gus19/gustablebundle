@@ -24,12 +24,12 @@ use \Twig\Environment as Twig_Environment;
  */
 class AttributesFormaterExtension extends Twig_Extension
 {
-	public function getName()
+	public function getName(): string
 	{
 		return 'attributes_format';
 	}
 	
-	public function getFilters()
+	public function getFilters(): array
 	{
 		return array(
 			new Twig_SimpleFilter('format_attributes', array($this, 'format'), array('is_safe' => array('html')))

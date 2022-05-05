@@ -64,7 +64,7 @@ class GusTableExtension extends Extension {
     $container->setParameter('gus_table.order_default_options', $config['order_default_options']);
   }
 
-  public function getAlias() {
+  public function getAlias(): string {
     return 'gus_table';
   }
 }
