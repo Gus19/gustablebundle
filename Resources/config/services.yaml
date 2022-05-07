@@ -10,12 +10,12 @@ services:
     arguments: ["@request_stack","@router"]
   gus.table_context:
     class: Gus\TableBundle\DependencyInjection\Service\TableContext
-  gus.table_collector:
-    class: Gus\TableBundle\DataCollector\TableCollector
-    arguments: ["@gus.table_context","@gus.table_stopwatch","@gus.table_hint"]
-    public: false
-    tags:
-      - { name: data_collector, template: '@GusTable/DataCollector/table_collector', id: 'gus.table_collector' }
+#  gus.table_collector:
+#    class: Gus\TableBundle\DataCollector\TableCollector
+#    arguments: ["@gus.table_context","@gus.table_stopwatch","@gus.table_hint"]
+#    public: false
+#    tags:
+#      - { name: data_collector, template: '@GusTable/DataCollector/table_collector', id: 'gus.table_collector' }
   gus.table_stopwatch:
     class: Gus\TableBundle\DependencyInjection\Service\TableStopwatchService
     arguments: ["%kernel.debug%"]
