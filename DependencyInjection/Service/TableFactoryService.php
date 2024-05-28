@@ -20,6 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Service TableFactory for creating tables from controller.
@@ -74,8 +75,10 @@ class TableFactoryService
 	 * @var boolean
 	 */
 	private $isMulti = false;
+
+	private AuthorizationCheckerInterface $authorizationChecker;
 	
-	function __construct(ContainerInterface $container, EntityManager $entityManager, RequestStack $requestStack, RouterInterface $router, TableStopwatchService $stopwatchService, TableHintService $hintService)
+	function __construct(ContainerInterface $container, EntityManager $entityManager, RequestStack $requestStack, RouterInterface $router, TableStopwatchService $stopwatchService, TableHintService $hintService, AuthorizationCheckerInterface $authorizationChecker)
 	{
 		$this->container = $container;
 		$this->entityManager = $entityManager;
@@ -83,6 +86,7 @@ class TableFactoryService
 		$this->router = $router;
 		$this->stopwatchService = $stopwatchService;
 		$this->hintService = $hintService;
+		$this->authorizationChecker = $authorizationChecker;
 	}
 	
 	/**
@@ -94,7 +98,7 @@ class TableFactoryService
 	 */
 	public function createTable(AbstractTableType $tableType, array $options = array())
 	{
-		$table = new Table($this->container, $this->entityManager, $this->request, $this->router, $this->isMulti, $this->stopwatchService, $this->hintService);
+		$table = new Table($this->container, $this->entityManager, $this->request, $this->router, $this->isMulti, $this->stopwatchService, $this->hintService, $this->authorizationChecker);
 		
 		$this->isMulti = true;
 		
@@ -112,7 +116,7 @@ class TableFactoryService
 	 */
 	public function createTableTypeBuilder($name, array $options = array())
 	{
-		$table = new Table($this->container, $this->entityManager, $this->request, $this->router, $this->logger, $this->isMulti, $this->stopwatchService);
+		$table = new Table($this->container, $this->entityManager, $this->request, $this->router, $this->logger, $this->isMulti, $this->stopwatchService, $this->authorizationChecker);
 		
 		$this->isMulti = true;
 		

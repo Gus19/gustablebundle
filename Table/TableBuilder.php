@@ -66,10 +66,10 @@ class TableBuilder
 	 */
 	private $registeredColumns;
 	
-	function __construct(ContainerInterface $container)
+	function __construct(ContainerInterface $container, AuthorizationCheckerInterface $authorizationChecker)
 	{
 		$this->container = $container;
-		$this->authorizationChecker = $this->container->get('security.authorization_checker');
+		$this->authorizationChecker = $authorizationChecker; //$this->container->get('security.authorization_checker');
 		
 		$this->columns = array();
 		

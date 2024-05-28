@@ -35,9 +35,9 @@ class SelectionButtonBuilder
 	 */
 	private $buttons;
 	
-	public function __construct(ContainerInterface $container)
+	public function __construct(AuthorizationCheckerInterface $authorizationChecker)
 	{
-		$this->authorizationChecker = $container->get('security.authorization_checker');
+		$this->authorizationChecker = $authorizationChecker;
 		$this->buttons = array();
 	}
 	

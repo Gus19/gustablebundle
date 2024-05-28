@@ -40,6 +40,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * The table will be build by the table builder and represented
@@ -198,6 +199,8 @@ class Table
 	 * @var int
 	 */
 	private $state = self::STATE_INSTANTIATED;
+
+  private AuthorizationCheckerInterface $authorizationChecker;
 	
 	/**
 	 * Creates a new instance of an table.
@@ -209,7 +212,7 @@ class Table
 	 * @param boolean $usePrefix						Should the table use a prefix for filter, pagenination and order?
 	 * @param TableStopwatchService $stopwatchService	Stopwatch-Service.
 	 */
-	function __construct(ContainerInterface $container, EntityManager $entityManager, Request $request, RouterInterface $router, $usePrefix, TableStopwatchService $stopwatchService, TableHintService $hintService)
+	function __construct(ContainerInterface $container, EntityManager $entityManager, Request $request, RouterInterface $router, $usePrefix, TableStopwatchService $stopwatchService, TableHintService $hintService, AuthorizationCheckerInterface $authorizationChecker)
 	{
 		// Save the parameters: Symfonys container, curent request,
 		// url router and doctrines entityManager
@@ -221,6 +224,7 @@ class Table
 		$this->stopwatchService = $stopwatchService;
 		$this->hintService = $hintService;
 		$this->tableContext = $container->get('gus.table_context');
+		$this->authorizationChecker = $authorizationChecker;
 		
 		// Set up rows, filters and optionsResolver
 		// for the table type.
@@ -244,7 +248,7 @@ class Table
 		$this->options['table'] = $options;
 		
 		$this->stopwatchService->start($tableType->getName(), TableStopwatchService::CATEGORY_INSTANTIATION);
-		$this->tableBuilder = new TableBuilder($this->container);
+		$this->tableBuilder = new TableBuilder($this->container, $this->authorizationChecker);
 		$this->tableType = $tableType;
 		$this->dataSource = $tableType->getDataSource($this->container);
 		
@@ -256,7 +260,7 @@ class Table
 		
 		if($this->tableType instanceof SelectionTypeInterface) 
 		{
-			$this->selectionButtonBuilder = new SelectionButtonBuilder($this->container);
+			$this->selectionButtonBuilder = new SelectionButtonBuilder($this->authorizationChecker);
 		}
 		
 		$this->tableType->setContainer($this->container);
@@ -582,7 +586,10 @@ class Table
 		$data = $this->dataSource->getData(	$this->container, $this->columns, $this->filters, $pagination, $order );
 
 		$isSelectionRequested = $this->isSelectionRequested();
-		$requestedRows = $this->request->request->get("selection_column", array());
+		$requestedRows = $this->request->request->get("selection_column");
+		if($requestedRows == null) {
+		  $requestedRows = [];
+    }
 		$rows = array();
 		foreach($data as $dataRow)
 		{
@@ -998,7 +1005,7 @@ class Table
 					$requestParameterName = str_replace('.','_',$parameterName);
 				}
 				//$values[$parameterName] = trim((string) $this->request->query->get($requestParameterName, ''));
-        $values[$parameterName] = $this->request->query->get($requestParameterName, '');
+        $values[$parameterName] = $this->request->query->get($requestParameterName);
 			}
 
 			$filter->setValue($values);

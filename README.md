@@ -1,7 +1,7 @@
 TableBundle
 ===========
 
-Upgrade for Symfony ~4.0.
+Upgrade for Symfony ~5.4.
 
 I will try to update the documentation.
 

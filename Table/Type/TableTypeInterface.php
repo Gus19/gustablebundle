@@ -60,7 +60,7 @@ interface TableTypeInterface extends ContainerAwareInterface
 	 * @param ContainerInterface $container	Instance of the container.
 	 * @return DataSourceInterface
 	 */
-	public function getDataSource(ContainerInterface $container);
+	public function getDataSource(ContainerInterface $container) : DataSourceInterface;
 	
 	/**
 	 * Builds the table, by adding some columns to the builder.
